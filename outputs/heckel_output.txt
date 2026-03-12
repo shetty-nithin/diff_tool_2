@@ -1,0 +1,10 @@
+[DELETED] 2026-03-06 10:02:10 INFO API request GET /api/orders user=101
+[DELETED] 2026-03-06 10:02:11 INFO API request GET /api/products user=102
+[DELETED] 2026-03-06 10:00:02 INFO Loading configuration from /etc/app/config.yml this line will be deleted
+[DELETED] 2026-03-06 10:03:20 INFO Job scheduler triggered job_id=9001
+[DELETED] 2026-03-06 10:04:20 WARN Disk usage at 80% on /dev/sda1
+[INSERTED] 2026-03-06 10:02:10 INFO API request GET /api/orders user=101
+[INSERTED] 2026-03-06 10:02:11 INFO API request GET /api/products user=102
+[INSERTED] 2026-03-06 10:04:20 WARN Disk usage at 80% on /dev/sda1 updated or inserted
+[INSERTED] 2026-03-06 10:03:20 INFO Job scheduler triggered job_id=9001
+[INSERTED] 2026-03-06 10:03:20 INFO Job scheduler triggered job_id=9001

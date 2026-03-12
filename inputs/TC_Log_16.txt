@@ -1,0 +1,318 @@
+2025-03-03 23:25:32     [Log]    1. Comment: Stop Cyber syslog
+2025-03-03 23:25:32 [DebugOK]      1. Debug success. Expected: Run 'sudo service syslog-ng stop'. Returns 'Stopping syslog-ng: [60G[[0;32m  OK  [0;39m]' | Obtained: N/A
+2025-03-03 23:25:32     [Log]    2. Comment: Start Cyber syslog
+2025-03-03 23:25:32 [DebugOK]      2. Debug success. Expected: Run 'sudo service syslog-ng start'. Returns 'Starting syslog-ng: [60G[[0;32m  OK  [0;39m]' | Obtained: N/A
+2025-03-03 23:25:32     [Log]  *** Start Test TC_Sy_PWR_ON_CH_INIT_002.py - Version 
+2025-03-03 23:25:32     [Log] XStudio logging not started. missing /log='file.txt' calling argument.
+2025-03-03 23:25:32     [Log]    3. Comment: Do a dry-run execution before starting the test
+2025-03-03 23:26:05 [Success]    4. Assertion success. Expected: DRY-RUN execution returns no error | Obtained: 
+2025-03-03 23:26:05 [Success]    5. Assertion success. Expected: Check all functions defined in a testscript are called inside it | Obtained: 
+2025-03-03 23:26:05 [Success]    6. Assertion success. Expected: Check all data members defined in a testscript are called inside it | Obtained: 
+2025-03-03 23:26:06 [Success]    7. Assertion success. Expected: Launch PyChecker on files | Obtained: 
+2025-03-03 23:26:06 [Success]    8. Assertion success. Expected: Check start and stop function calls | Obtained: 
+2025-03-03 23:26:07     [Log]    9. Comment: Check NAPA configuration
+2025-03-03 23:26:10     [Log]    10. Comment: Apply Ethernet network configuration
+2025-03-03 23:26:24     [Log]    11. Comment: Ensure that ExchAppli port are unused
+2025-03-03 23:26:25 [DebugOK]      3. Debug success. Expected: -- Extracting SIMU_PARAMS_NETW_0.zip | Obtained: N/A
+2025-03-03 23:26:26 [DebugOK]      4. Debug success. Expected: -- Extracting SIMU_PARAMS_NETW_0.zip | Obtained: N/A
+2025-03-03 23:26:27     [Log]    12. Comment: restore Pickering to default
+2025-03-03 23:26:29 [DebugOK]      5. Debug success. Expected: ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no sshuser@172.16.250.1 executed on 172.16.250.1 | Obtained: SUCCESS
+2025-03-03 23:26:35 [DebugOK]      12. Debug success. Expected: ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no sshuser@172.16.250.1 executed on 172.16.250.1 | Obtained: SUCCESS
+2025-03-03 23:26:35     [Log]    13. Comment: Get Testbench Interfaces
+2025-03-03 23:26:39     [Log]    14. Comment: List of interfaces = 1. eth0 2. virbr0 3. nflog 4. nfqueue 5. napa0 6. vmnet1 7. napa1 8. napa2 9. napa3 10. eth5 11. eth6 12. eth7 13. eth8 14. vmnet8 15. any 16. lo (Loopback) 
+2025-03-03 23:26:39     [Log]    15. Comment: Update Testbench Params
+2025-03-03 23:26:39 [DebugOK]      15. Debug success. Expected: ThreadReceive: Thread is run | Obtained: N/A
+2025-03-03 23:26:39     [Log]    16. Comment: Execution environment is TARGET on LINL190300412.tnext.loc
+2025-03-03 23:26:39 [DebugOK]      15. Debug success. Expected: Executing script with an IPX800 with 32 outputs : True | Obtained: N/A
+2025-03-03 23:26:39     [Log]    17. Comment: Hardware configuration is : P279_P306 (SCU1 Proto FH279 and SCU2 Proto FH306)
+2025-03-03 23:26:40 [DebugOK]      16. Debug success. Expected: Path to dist found in: '/public/rajeshkv_Testbench53_view_Linux/projets/moon/test/dist/moon-V1.8.0_BETA1_R1.6_BETA1' | Obtained: True
+2025-03-03 23:26:41     [Log]  1. Step: Set-up MooN configuration
+2025-03-03 23:26:41 [DebugOK]      1. Debug success. Expected: IPX800 return success | Obtained: OK
+2025-03-03 23:26:41 [Success]    1. Assertion success. Expected: Both SCU1 and SCU2's Channel A and Channel B are powered-on | Obtained: True
+2025-03-03 23:26:41     [Log]    2. Comment: Get the Global CRC from Input configuration PDF files
+2025-03-03 23:27:05 [Success]    3. Assertion success. Expected: Wait duration is 20s | Obtained: obtained 20.0 s
+2025-03-03 23:27:05 [Success]    4. Assertion success. Expected: Configuration ISO is copied to sftp server successfully : spec_conf_0 | Obtained: True
+2025-03-03 23:28:00     [Log]    5. Comment: TestAppli version: 12.44
+2025-03-03 23:28:00     [Log]    6. Comment: CB1 is waiting
+2025-03-03 23:28:00     [Log]    7. Comment: CA1 is waiting
+2025-03-03 23:28:01     [Log]    8. Comment: CB2 is waiting
+2025-03-03 23:28:01     [Log]    9. Comment: CA2 is waiting
+2025-03-03 23:28:08     [Log]    10. Comment: CA1 is initialized
+2025-03-03 23:28:08     [Log]    11. Comment: CB1 is initialized
+2025-03-03 23:28:09     [Log]    12. Comment: CA2 is initialized
+2025-03-03 23:28:09     [Log]    13. Comment: CB2 is initialized
+2025-03-03 23:28:09     [Log]    14. Comment: CA1 is running
+2025-03-03 23:28:09     [Log]    15. Comment: CB1 is running
+2025-03-03 23:28:09     [Log]    16. Comment: CA2 is running
+2025-03-03 23:28:09     [Log]    17. Comment: CB2 is running
+2025-03-03 23:28:09     [Log]    18. Comment: CH1A CH1B CH2A CH2B is running
+2025-03-03 23:28:09 [Success]    19. Assertion success. Expected: TestAppli is started on MOON1 - Channel A and Channel B | Obtained: True
+2025-03-03 23:29:09 [Success]    20. Assertion success. Expected: Wait duration is 60s | Obtained: obtained 60.0 s
+2025-03-03 23:29:09     [Log]    21. Comment: Send the action (ACTION_TYPE_START_REMOTE_DOWNLOAD) to TestAppli on all channels for next cycle
+2025-03-03 23:29:09 [DebugOK]      2. Debug success. Expected: The action (ACTION_TYPE_START_REMOTE_DOWNLOAD) is received by channels before 2 retries | Obtained: 0
+2025-03-03 23:29:09 [Success]    22. Assertion success. Expected: TestAppli receives the action (46) on all channels - CH1A CH1B CH2A CH2B : True | Obtained: True
+2025-03-03 23:36:43 [DebugOK]      3. Debug success. Expected: ExtMsgQueue_SCU1_A is full | Obtained: N/A
+2025-03-03 23:36:44 [DebugOK]      4. Debug success. Expected: ExtMsgQueue_SCU1_B is full | Obtained: N/A
+2025-03-03 23:38:41 [DebugOK]      5. Debug success. Expected: ExtMsgQueue_SCU2_B is full | Obtained: N/A
+2025-03-03 23:39:02 [DebugOK]      6. Debug success. Expected: ExtMsgQueue_SCU2_A is full | Obtained: N/A
+2025-03-03 23:59:09 [Success]    23. Assertion success. Expected: Wait duration is 1800s | Obtained: obtained 1800.0 s
+2025-03-03 23:59:09     [Log]    24. Comment: CA1 is running
+2025-03-03 23:59:09     [Log]    25. Comment: CB1 is running
+2025-03-03 23:59:09     [Log]    26. Comment: CA2 is running
+2025-03-03 23:59:09     [Log]    27. Comment: CB2 is running
+2025-03-03 23:59:09     [Log]    28. Comment: CH1A CH1B CH2A CH2B is running
+2025-03-03 23:59:10     [Log]    29. Comment: Send the action (ACTION_TYPE_START_GET_ACTIVE_CONF) to TestAppli on all channels for next cycle
+2025-03-03 23:59:10 [DebugOK]      7. Debug success. Expected: The action (ACTION_TYPE_START_GET_ACTIVE_CONF) is received by channels before 2 retries | Obtained: 0
+2025-03-03 23:59:10 [Success]    30. Assertion success. Expected: TestAppli receives the action (47 on all channels -CH1A CH1B CH2A CH2B: True | Obtained: True
+2025-03-03 23:59:20 [Success]    31. Assertion success. Expected: Wait duration is 10s | Obtained: obtained 10.0 s
+2025-03-04 00:04:20 [Success]    32. Assertion success. Expected: Wait duration is 300s | Obtained: obtained 300.0 s
+2025-03-04 00:04:20     [Log]    33. Comment: Untar the content of the configuration archives in the trace folder
+2025-03-04 00:04:20 [DebugOK]      8. Debug success. Expected: Perform: mkdir /public/rajeshkv_Testbench53_view_Linux/projets/moon/test/scenarios/functional/traces/TC_Sy_PWR_ON_CH_INIT_002_TARGET//spec_conf_0 | Obtained: N/A
+2025-03-04 00:04:20 [DebugOK]      9. Debug success. Expected: No error was returned by the mkdir command, expected null stderr | Obtained: 
+2025-03-04 00:04:20 [DebugOK]      10. Debug success. Expected: Perform: mkdir /public/rajeshkv_Testbench53_view_Linux/projets/moon/test/scenarios/functional/traces/TC_Sy_PWR_ON_CH_INIT_002_TARGET//spec_conf_0/A | Obtained: N/A
+2025-03-04 00:04:20 [DebugOK]      11. Debug success. Expected: No error was returned by the mkdir command, expected null stderr | Obtained: 
+2025-03-04 00:04:20 [DebugOK]      12. Debug success. Expected: Perform: Untar *.tmp, *.txt, *.zip and *.pdf files from /public/rajeshkv_Testbench53_view_Linux/projets/moon/test/test_configurations/Output/Spec_Conf_0/A.tar.gz | Obtained: N/A
+2025-03-04 00:04:21 [DebugOK]      13. Debug success. Expected: Perform: mkdir /public/rajeshkv_Testbench53_view_Linux/projets/moon/test/scenarios/functional/traces/TC_Sy_PWR_ON_CH_INIT_002_TARGET//spec_conf_0/B | Obtained: N/A
+2025-03-04 00:04:21 [DebugOK]      14. Debug success. Expected: No error was returned by the mkdir command, expected null stderr | Obtained: 
+2025-03-04 00:04:21 [DebugOK]      15. Debug success. Expected: Perform: Untar *.tmp, *.txt, *.zip and *.pdf files from /public/rajeshkv_Testbench53_view_Linux/projets/moon/test/test_configurations/Output/Spec_Conf_0/B.tar.gz | Obtained: N/A
+2025-03-04 00:04:22 [DebugOK]      16. Debug success. Expected: Perform: mkdir /public/rajeshkv_Testbench53_view_Linux/projets/moon/test/scenarios/functional/traces/TC_Sy_PWR_ON_CH_INIT_002_TARGET//spec_conf_0/G | Obtained: N/A
+2025-03-04 00:04:22 [DebugOK]      17. Debug success. Expected: No error was returned by the mkdir command, expected null stderr | Obtained: 
+2025-03-04 00:04:22 [DebugOK]      18. Debug success. Expected: Perform: Untar *.tmp, *.txt, *.zip and *.pdf files from /public/rajeshkv_Testbench53_view_Linux/projets/moon/test/test_configurations/Output/Spec_Conf_0/G.tar.gz | Obtained: N/A
+2025-03-04 00:04:24 [DebugOK]      19. Debug success. Expected: -- Extracting /G/History_User_Input_Files.zip | Obtained: N/A
+2025-03-04 00:04:24     [Log]    34. Comment: Wireshark preference for UNISIG TCP2UDP forward port range: 48 SAI, 2 EXT_TCP, 1 NTG
+2025-03-04 00:04:24     [Log]    35. Comment: 	     SAI TCP2UDP forward port range:65354-65401,65419-65466
+2025-03-04 00:04:24     [Log]    36. Comment: 	 EXT_TCP TCP2UDP forward port range:65402-65403,65467-65468
+2025-03-04 00:04:24     [Log]    37. Comment: 	     NTG TCP2UDP forward port range:65404-65404,65469-65469
+2025-03-04 00:04:24     [Log]    38. Comment: Read Partial and Global CRC values for spec_conf_0 from configuration A/B/G.tar.gz files
+2025-03-04 00:04:24 [Success]    39. Assertion success. Expected: MooN configuration is set to spec_conf_0: True | Obtained: True
+2025-03-04 00:04:24     [Log]  2. Step: Power-off MooN
+2025-03-04 00:04:24 [DebugOK]      1. Debug success. Expected: IPX800 return success | Obtained: OK
+2025-03-04 00:04:26 [Success]    1. Assertion success. Expected: Moon is stopped | Obtained: True
+2025-03-04 00:04:26     [Log]  3. Step: Configure the grub timeout to make successive start of channels with following order : A1-B1
+2025-03-04 00:04:26     [Log]    1. Comment: Set grub timeout to (10,)
+2025-03-04 00:04:26 [DebugOK]      1. Debug success. Expected: do_not_power_off: | Obtained: False
+2025-03-04 00:04:26     [Log]    2. Comment: Power-off MooN
+2025-03-04 00:04:27 [DebugOK]      2. Debug success. Expected: IPX800 return success | Obtained: OK
+2025-03-04 00:04:31 [DebugOK]      3. Debug success. Expected: TestAppli is stopped on SCU1 SCU2 | Obtained: True
+2025-03-04 00:04:32     [Log]    3. Comment: Power-on MooN
+2025-03-04 00:04:32 [DebugOK]      4. Debug success. Expected: IPX800 return success | Obtained: OK
+2025-03-04 00:04:32 [DebugOK]      5. Debug success. Expected: MooN SCU1 SCU2 are powered-on | Obtained: True
+2025-03-04 00:04:32     [Log]    4. Comment: Wait SIL0 initialization
+2025-03-04 00:04:33 [DebugOK]      6. Debug success. Expected: wait_sil0_init : result: ('PING 10.1.1.23 (10.1.1.23) 56(84) bytes of data.\n\n--- 10.1.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:04:34 [DebugOK]      7. Debug success. Expected: wait_sil0_init : result: ('PING 10.2.1.23 (10.2.1.23) 56(84) bytes of data.\n\n--- 10.2.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:04:35 [DebugOK]      8. Debug success. Expected: wait_sil0_init : result: ('PING 10.3.1.23 (10.3.1.23) 56(84) bytes of data.\n\n--- 10.3.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:04:36 [DebugOK]      9. Debug success. Expected: wait_sil0_init : result: ('PING 10.1.1.50 (10.1.1.50) 56(84) bytes of data.\n\n--- 10.1.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:04:37 [DebugOK]      10. Debug success. Expected: wait_sil0_init : result: ('PING 10.2.1.50 (10.2.1.50) 56(84) bytes of data.\n\n--- 10.2.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:04:38 [DebugOK]      11. Debug success. Expected: wait_sil0_init : result: ('PING 10.3.1.50 (10.3.1.50) 56(84) bytes of data.\n\n--- 10.3.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:04:40 [DebugOK]      12. Debug success. Expected: wait_sil0_init : result: ('PING 10.253.1.23 (10.253.1.23) 56(84) bytes of data.\n\n--- 10.253.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:04:41 [DebugOK]      13. Debug success. Expected: wait_sil0_init : result: ('PING 10.254.1.23 (10.254.1.23) 56(84) bytes of data.\n\n--- 10.254.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:04:42 [DebugOK]      14. Debug success. Expected: wait_sil0_init : result: ('PING 10.255.1.23 (10.255.1.23) 56(84) bytes of data.\n\n--- 10.255.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:04:43 [DebugOK]      15. Debug success. Expected: wait_sil0_init : result: ('PING 10.253.1.50 (10.253.1.50) 56(84) bytes of data.\n\n--- 10.253.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:04:44 [DebugOK]      16. Debug success. Expected: wait_sil0_init : result: ('PING 10.254.1.50 (10.254.1.50) 56(84) bytes of data.\n\n--- 10.254.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:04:45 [DebugOK]      17. Debug success. Expected: wait_sil0_init : result: ('PING 10.255.1.50 (10.255.1.50) 56(84) bytes of data.\n\n--- 10.255.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:04:47 [DebugOK]      18. Debug success. Expected: wait_sil0_init : result: ('PING 10.1.1.23 (10.1.1.23) 56(84) bytes of data.\n\n--- 10.1.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:04:48 [DebugOK]      19. Debug success. Expected: wait_sil0_init : result: ('PING 10.2.1.23 (10.2.1.23) 56(84) bytes of data.\n\n--- 10.2.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:04:49 [DebugOK]      20. Debug success. Expected: wait_sil0_init : result: ('PING 10.3.1.23 (10.3.1.23) 56(84) bytes of data.\n\n--- 10.3.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:04:50 [DebugOK]      21. Debug success. Expected: wait_sil0_init : result: ('PING 10.1.1.50 (10.1.1.50) 56(84) bytes of data.\n\n--- 10.1.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:04:51 [DebugOK]      22. Debug success. Expected: wait_sil0_init : result: ('PING 10.2.1.50 (10.2.1.50) 56(84) bytes of data.\n\n--- 10.2.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:04:52 [DebugOK]      23. Debug success. Expected: wait_sil0_init : result: ('PING 10.3.1.50 (10.3.1.50) 56(84) bytes of data.\n\n--- 10.3.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:04:53 [DebugOK]      24. Debug success. Expected: wait_sil0_init : result: ('PING 10.253.1.23 (10.253.1.23) 56(84) bytes of data.\n\n--- 10.253.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:04:55 [DebugOK]      25. Debug success. Expected: wait_sil0_init : result: ('PING 10.254.1.23 (10.254.1.23) 56(84) bytes of data.\n\n--- 10.254.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:04:56 [DebugOK]      26. Debug success. Expected: wait_sil0_init : result: ('PING 10.255.1.23 (10.255.1.23) 56(84) bytes of data.\n\n--- 10.255.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:04:57 [DebugOK]      27. Debug success. Expected: wait_sil0_init : result: ('PING 10.253.1.50 (10.253.1.50) 56(84) bytes of data.\n\n--- 10.253.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:04:58 [DebugOK]      28. Debug success. Expected: wait_sil0_init : result: ('PING 10.254.1.50 (10.254.1.50) 56(84) bytes of data.\n\n--- 10.254.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:04:59 [DebugOK]      29. Debug success. Expected: wait_sil0_init : result: ('PING 10.255.1.50 (10.255.1.50) 56(84) bytes of data.\n\n--- 10.255.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:05:00 [DebugOK]      30. Debug success. Expected: wait_sil0_init : result: ('PING 10.1.1.23 (10.1.1.23) 56(84) bytes of data.\n\n--- 10.1.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:05:02 [DebugOK]      31. Debug success. Expected: wait_sil0_init : result: ('PING 10.2.1.23 (10.2.1.23) 56(84) bytes of data.\n\n--- 10.2.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:05:02 [DebugOK]      32. Debug success. Expected: wait_sil0_init : result: ('PING 10.3.1.23 (10.3.1.23) 56(84) bytes of data.\n64 bytes from 10.3.1.23: icmp_seq=1 ttl=64 time=593 ms\n\n--- 10.3.1.23 ping statistics ---\n1 packets transmitted, 1 received, 0% packet loss, time 593ms\nrtt min/avg/max/mdev = 593.039/593.039/593.039/0.000 ms\n', '') | Obtained: N/A
+2025-03-04 00:05:02 [DebugOK]      33. Debug success. Expected: 10.3.1.23: SIL0 Linux is initialised. | Obtained: N/A
+2025-03-04 00:05:03 [DebugOK]      34. Debug success. Expected: wait_sil0_init : result: ('PING 10.1.1.50 (10.1.1.50) 56(84) bytes of data.\n\n--- 10.1.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:05:04 [DebugOK]      35. Debug success. Expected: wait_sil0_init : result: ('PING 10.2.1.50 (10.2.1.50) 56(84) bytes of data.\n64 bytes from 10.2.1.50: icmp_seq=1 ttl=64 time=0.220 ms\n\n--- 10.2.1.50 ping statistics ---\n1 packets transmitted, 1 received, 0% packet loss, time 0ms\nrtt min/avg/max/mdev = 0.220/0.220/0.220/0.000 ms\n', '') | Obtained: N/A
+2025-03-04 00:05:04 [DebugOK]      36. Debug success. Expected: 10.2.1.50: SIL0 Linux is initialised. | Obtained: N/A
+2025-03-04 00:05:04 [DebugOK]      37. Debug success. Expected: wait_sil0_init : result: ('PING 10.3.1.50 (10.3.1.50) 56(84) bytes of data.\n64 bytes from 10.3.1.50: icmp_seq=1 ttl=64 time=0.157 ms\n\n--- 10.3.1.50 ping statistics ---\n1 packets transmitted, 1 received, 0% packet loss, time 0ms\nrtt min/avg/max/mdev = 0.157/0.157/0.157/0.000 ms\n', '') | Obtained: N/A
+2025-03-04 00:05:04 [DebugOK]      38. Debug success. Expected: 10.3.1.50: SIL0 Linux is initialised. | Obtained: N/A
+2025-03-04 00:05:05 [DebugOK]      39. Debug success. Expected: wait_sil0_init : result: ('PING 10.253.1.23 (10.253.1.23) 56(84) bytes of data.\n\n--- 10.253.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:05:06 [DebugOK]      40. Debug success. Expected: wait_sil0_init : result: ('PING 10.254.1.23 (10.254.1.23) 56(84) bytes of data.\n\n--- 10.254.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:05:07 [DebugOK]      41. Debug success. Expected: wait_sil0_init : result: ('PING 10.253.1.50 (10.253.1.50) 56(84) bytes of data.\n\n--- 10.253.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:05:09 [DebugOK]      42. Debug success. Expected: wait_sil0_init : result: ('PING 10.1.1.23 (10.1.1.23) 56(84) bytes of data.\n\n--- 10.1.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:05:09 [DebugOK]      43. Debug success. Expected: wait_sil0_init : result: ('PING 10.2.1.23 (10.2.1.23) 56(84) bytes of data.\n64 bytes from 10.2.1.23: icmp_seq=1 ttl=64 time=0.158 ms\n\n--- 10.2.1.23 ping statistics ---\n1 packets transmitted, 1 received, 0% packet loss, time 0ms\nrtt min/avg/max/mdev = 0.158/0.158/0.158/0.000 ms\n', '') | Obtained: N/A
+2025-03-04 00:05:09 [DebugOK]      44. Debug success. Expected: 10.2.1.23: SIL0 Linux is initialised. | Obtained: N/A
+2025-03-04 00:05:10 [DebugOK]      45. Debug success. Expected: wait_sil0_init : result: ('PING 10.1.1.50 (10.1.1.50) 56(84) bytes of data.\n\n--- 10.1.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:05:11 [DebugOK]      46. Debug success. Expected: wait_sil0_init : result: ('PING 10.253.1.23 (10.253.1.23) 56(84) bytes of data.\n\n--- 10.253.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:05:12 [DebugOK]      47. Debug success. Expected: wait_sil0_init : result: ('PING 10.253.1.50 (10.253.1.50) 56(84) bytes of data.\n\n--- 10.253.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:05:13 [DebugOK]      48. Debug success. Expected: wait_sil0_init : result: ('PING 10.1.1.23 (10.1.1.23) 56(84) bytes of data.\n\n--- 10.1.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:05:14 [DebugOK]      49. Debug success. Expected: wait_sil0_init : result: ('PING 10.1.1.50 (10.1.1.50) 56(84) bytes of data.\n\n--- 10.1.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:05:15 [DebugOK]      50. Debug success. Expected: wait_sil0_init : result: ('PING 10.253.1.23 (10.253.1.23) 56(84) bytes of data.\n\n--- 10.253.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:05:17 [DebugOK]      51. Debug success. Expected: wait_sil0_init : result: ('PING 10.253.1.50 (10.253.1.50) 56(84) bytes of data.\n\n--- 10.253.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:05:18 [DebugOK]      52. Debug success. Expected: wait_sil0_init : result: ('PING 10.1.1.23 (10.1.1.23) 56(84) bytes of data.\n\n--- 10.1.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:05:19 [DebugOK]      53. Debug success. Expected: wait_sil0_init : result: ('PING 10.1.1.50 (10.1.1.50) 56(84) bytes of data.\n\n--- 10.1.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:05:20 [DebugOK]      54. Debug success. Expected: wait_sil0_init : result: ('PING 10.253.1.23 (10.253.1.23) 56(84) bytes of data.\n\n--- 10.253.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:05:21 [DebugOK]      55. Debug success. Expected: wait_sil0_init : result: ('PING 10.253.1.50 (10.253.1.50) 56(84) bytes of data.\n\n--- 10.253.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:05:22 [DebugOK]      56. Debug success. Expected: wait_sil0_init : result: ('PING 10.1.1.23 (10.1.1.23) 56(84) bytes of data.\n64 bytes from 10.1.1.23: icmp_seq=1 ttl=64 time=999 ms\n\n--- 10.1.1.23 ping statistics ---\n1 packets transmitted, 1 received, 0% packet loss, time 1000ms\nrtt min/avg/max/mdev = 999.995/999.995/999.995/0.000 ms\n', '') | Obtained: N/A
+2025-03-04 00:05:22 [DebugOK]      57. Debug success. Expected: 10.1.1.23: SIL0 Linux is initialised. | Obtained: N/A
+2025-03-04 00:05:22 [DebugOK]      58. Debug success. Expected: wait_sil0_init : result: ('PING 10.1.1.50 (10.1.1.50) 56(84) bytes of data.\n64 bytes from 10.1.1.50: icmp_seq=1 ttl=64 time=0.137 ms\n\n--- 10.1.1.50 ping statistics ---\n1 packets transmitted, 1 received, 0% packet loss, time 0ms\nrtt min/avg/max/mdev = 0.137/0.137/0.137/0.000 ms\n', '') | Obtained: N/A
+2025-03-04 00:05:22 [DebugOK]      59. Debug success. Expected: 10.1.1.50: SIL0 Linux is initialised. | Obtained: N/A
+2025-03-04 00:05:22 [DebugOK]      60. Debug success. Expected: SIL0 Linux are initialised. SIL0 Linux init = [True, True, True, True, True, True]. SIL0 Linux ip = ['10.1.1.23', '10.2.1.23', '10.3.1.23', '10.1.1.50', '10.2.1.50', '10.3.1.50'] | Obtained: N/A
+2025-03-04 00:05:23 [DebugOK]      61. Debug success. Expected: ssh -F /public/rajeshkv_Testbench53_view_Linux/projets/moon/test/scenarios/functional/config/ssh/ssh_config root@10.3.1.23 mkdir /tmp/sda5 executed on 10.3.1.23 | Obtained: EOF
+2025-03-04 00:05:23 [DebugOK]      62. Debug success. Expected: ssh -F /public/rajeshkv_Testbench53_view_Linux/projets/moon/test/scenarios/functional/config/ssh/ssh_config root@10.3.1.23 mount /dev/sda5 /tmp/sda5 executed on 10.3.1.23 | Obtained: EOF
+2025-03-04 00:05:24 [DebugOK]      63. Debug success. Expected: ssh -F /public/rajeshkv_Testbench53_view_Linux/projets/moon/test/scenarios/functional/config/ssh/ssh_config root@10.3.1.23 sed -i 's/timeout=.*/timeout=10/' /tmp/sda5/boot/grub/grub.cfg executed on 10.3.1.23 | Obtained: EOF
+2025-03-04 00:05:24 [DebugOK]      64. Debug success. Expected: ssh -F /public/rajeshkv_Testbench53_view_Linux/projets/moon/test/scenarios/functional/config/ssh/ssh_config root@10.3.1.23 sync executed on 10.3.1.23 | Obtained: EOF
+2025-03-04 00:05:25 [DebugOK]      65. Debug success. Expected: ssh -F /public/rajeshkv_Testbench53_view_Linux/projets/moon/test/scenarios/functional/config/ssh/ssh_config root@10.3.1.23 echo 3 > /proc/sys/vm/drop_caches executed on 10.3.1.23 | Obtained: EOF
+2025-03-04 00:05:29 [DebugOK]      66. Debug success. Expected: 10.3.1.23 : Setting grub timeout to (10,) | Obtained: N/A
+2025-03-04 00:05:30     [Log]    5. Comment: Power-off MooN
+2025-03-04 00:05:30 [DebugOK]      67. Debug success. Expected: IPX800 return success | Obtained: OK
+2025-03-04 00:05:34 [DebugOK]      68. Debug success. Expected: TestAppli is stopped on SCU1 SCU2 | Obtained: True
+2025-03-04 00:05:34 [Success]    6. Assertion success. Expected: Grub has been modified | Obtained: True
+2025-03-04 00:05:34     [Log]  4. Step: Start Ethernet recording
+2025-03-04 00:05:34     [Log]    1. Comment: TSHARK version: 4.0.1
+2025-03-04 00:05:34 [DebugOK]      1. Debug success. Expected: TSHARK init: with log_file = None, suffix = _spec_conf_0 | Obtained: N/A
+2025-03-04 00:05:34 [DebugOK]      2. Debug success. Expected: ThreadDumpcap: Dumpcap args = ('dumpcap', '-q', '-g', '-w', '/public/rajeshkv_Testbench53_view_Linux/projets/moon/test/scenarios/functional/traces/TC_Sy_PWR_ON_CH_INIT_002_TARGET/Capture_napa2_spec_conf_0.pcap', '-i', 'napa2') | Obtained: True
+2025-03-04 00:05:34 [DebugOK]      2. Debug success. Expected: ThreadDumpcap: Dumpcap args = ('dumpcap', '-q', '-g', '-w', '/public/rajeshkv_Testbench53_view_Linux/projets/moon/test/scenarios/functional/traces/TC_Sy_PWR_ON_CH_INIT_002_TARGET/Capture_napa0_spec_conf_0.pcap', '-i', 'napa0') | Obtained: True
+2025-03-04 00:05:38 [DebugOK]      3. Debug success. Expected: ThreadDumpcap: Send current log file | Obtained: /public/rajeshkv_Testbench53_view_Linux/projets/moon/test/scenarios/functional/traces/TC_Sy_PWR_ON_CH_INIT_002_TARGET/Capture_napa2_spec_conf_0.pcap
+2025-03-04 00:05:38 [DebugOK]      3. Debug success. Expected: ThreadDumpcap: Send current log file | Obtained: /public/rajeshkv_Testbench53_view_Linux/projets/moon/test/scenarios/functional/traces/TC_Sy_PWR_ON_CH_INIT_002_TARGET/Capture_napa0_spec_conf_0.pcap
+2025-03-04 00:05:38 [DebugOK]      2. Debug success. Expected: TSHARK starting: all dumpcap threads log_file has been found in 3.91634702682s) | Obtained: '['/public/rajeshkv_Testbench53_view_Linux/projets/moon/test/scenarios/functional/traces/TC_Sy_PWR_ON_CH_INIT_002_TARGET/Capture_napa2_spec_conf_0.pcap', '/public/rajeshkv_Testbench53_view_Linux/projets/moon/test/scenarios/functional/traces/TC_Sy_PWR_ON_CH_INIT_002_TARGET/Capture_napa0_spec_conf_0.pcap']'
+2025-03-04 00:05:38 [Success]    2. Assertion success. Expected: Ethernet recording started on unique MooN external link and on switched network // First capture | Obtained: True
+2025-03-04 00:05:38     [Log]  5. Step: Power-on SCU1
+2025-03-04 00:05:39 [DebugOK]      1. Debug success. Expected: IPX800 return success | Obtained: OK
+2025-03-04 00:05:39 [Success]    1. Assertion success. Expected: Channel A and Channel B are powered-on | Obtained: True
+2025-03-04 00:05:39     [Log]  6. Step: Wait application gets in cyclic mode
+2025-03-04 00:06:59     [Log]    1. Comment: CA1 is waiting
+2025-03-04 00:06:59     [Log]    2. Comment: CB1 is waiting
+2025-03-04 00:07:07     [Log]    3. Comment: CB1 is initialized
+2025-03-04 00:07:07     [Log]    4. Comment: CA1 is initialized
+2025-03-04 00:07:07     [Log]    5. Comment: CA1 is running
+2025-03-04 00:07:07     [Log]    6. Comment: CB1 is running
+2025-03-04 00:07:07     [Log]    7. Comment: CH1A CH1B is running
+2025-03-04 00:07:07 [Success]    8. Assertion success. Expected: Remote Reconf Active API return same CRC Value in all channels - CH1A CH1B | Obtained: True
+2025-03-04 00:07:07 [Success]    9. Assertion success. Expected: Remote Reconf Active API return CRC Value  | Obtained: a608530
+2025-03-04 00:07:07 [Success]    10. Assertion success. Expected: Global CRC derived from Input Configuration - spec_conf_0 is  | Obtained: A608530
+2025-03-04 00:07:07 [Success]    11. Assertion success. Expected: Configuration spec_conf_0 is loaded successfully through remote reconfiguration | Obtained: True
+2025-03-04 00:07:07 [Success]    12. Assertion success. Expected: TestAppli is initialised on Channel A and Channel B | Obtained: True
+2025-03-04 00:07:07     [Log]  7. Step: Wait a little bit (fixed time to 10 s)
+2025-03-04 00:07:17 [Success]    1. Assertion success. Expected: Wait duration is 10s | Obtained: obtained -10.0 s
+2025-03-04 00:07:17     [Log]  8. Step: Stop Ethernet recording
+2025-03-04 00:07:17 [DebugOK]      1. Debug success. Expected: TSHARK stopping: Send STOP to thread (napa2) | Obtained: True
+2025-03-04 00:07:17 [DebugOK]      2. Debug success. Expected: TSHARK stopping: Send STOP to thread (napa0) | Obtained: True
+2025-03-04 00:07:17 [DebugOK]      4. Debug success. Expected: ThreadDumpcap: Receive Termination Request | Obtained: True
+2025-03-04 00:07:17 [DebugOK]      4. Debug success. Expected: ThreadDumpcap: Receive Termination Request | Obtained: True
+2025-03-04 00:07:18 [DebugOK]      5. Debug success. Expected: ThreadDumpcap: Dumpcap Termination sent | Obtained: True
+2025-03-04 00:07:18 [DebugOK]      5. Debug success. Expected: ThreadDumpcap: Dumpcap Termination sent | Obtained: True
+2025-03-04 00:07:19 [DebugOK]      6. Debug success. Expected: ThreadDumpcap: Dumpcap is Terminated | Obtained: True
+2025-03-04 00:07:19 [DebugOK]      7. Debug success. Expected: ThreadDumpcap: Thread finished | Obtained: True
+2025-03-04 00:07:19 [DebugOK]      6. Debug success. Expected: ThreadDumpcap: Dumpcap is Terminated | Obtained: True
+2025-03-04 00:07:19 [DebugOK]      7. Debug success. Expected: ThreadDumpcap: Thread finished | Obtained: True
+2025-03-04 00:07:19     [Log]    1. Comment:     Packets captured: 13321
+2025-03-04 00:07:19     [Log]    2. Comment:     Packets received/dropped on interface 'napa2': 13321/0 (pcap:0/dumpcap:0/flushed:0) (100.0%)
+2025-03-04 00:07:19     [Log]    3. Comment:     Packets captured: 80519
+2025-03-04 00:07:19     [Log]    4. Comment:     Packets received/dropped on interface 'napa0': 80519/206 (pcap:0/dumpcap:0/flushed:206) (99.7%)
+2025-03-04 00:07:19     [Log]    5. Comment:     /public/rajeshkv_Testbench53_view_Linux/projets/moon/test/scenarios/functional/traces/TC_Sy_PWR_ON_CH_INIT_002_TARGET/Capture_napa2_spec_conf_0.pcap
+2025-03-04 00:07:19     [Log]    6. Comment:     /public/rajeshkv_Testbench53_view_Linux/projets/moon/test/scenarios/functional/traces/TC_Sy_PWR_ON_CH_INIT_002_TARGET/Capture_napa0_spec_conf_0.pcap
+2025-03-04 00:07:19 [Success]    7. Assertion success. Expected: Ethernet recording is stopped : expected True | Obtained: True
+2025-03-04 00:07:19 [Success]    8. Assertion success. Expected: Successfully filtered duplicate frames : expected True | Obtained: True
+2025-03-04 00:07:20 [Success]    9. Assertion success. Expected: Successfully reordered frames : expected True | Obtained: True
+2025-03-04 00:07:20     [Log]  9. Step: Power-off MooN
+2025-03-04 00:07:20 [DebugOK]      1. Debug success. Expected: IPX800 return success | Obtained: OK
+2025-03-04 00:07:22 [Success]    1. Assertion success. Expected: Moon is stopped | Obtained: True
+2025-03-04 00:07:22     [Log]  10. Step: Restore grub time to initial value = 1
+2025-03-04 00:07:22     [Log]    1. Comment: Set grub timeout to (1,)
+2025-03-04 00:07:22 [DebugOK]      1. Debug success. Expected: do_not_power_off: | Obtained: False
+2025-03-04 00:07:22     [Log]    2. Comment: Power-off MooN
+2025-03-04 00:07:22 [DebugOK]      2. Debug success. Expected: IPX800 return success | Obtained: OK
+2025-03-04 00:07:26 [DebugOK]      3. Debug success. Expected: TestAppli is stopped on SCU1 SCU2 | Obtained: True
+2025-03-04 00:07:27     [Log]    3. Comment: Power-on MooN
+2025-03-04 00:07:27 [DebugOK]      4. Debug success. Expected: IPX800 return success | Obtained: OK
+2025-03-04 00:07:27 [DebugOK]      5. Debug success. Expected: MooN SCU1 SCU2 are powered-on | Obtained: True
+2025-03-04 00:07:27     [Log]    4. Comment: Wait SIL0 initialization
+2025-03-04 00:07:28 [DebugOK]      6. Debug success. Expected: wait_sil0_init : result: ('PING 10.1.1.23 (10.1.1.23) 56(84) bytes of data.\n\n--- 10.1.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:07:29 [DebugOK]      7. Debug success. Expected: wait_sil0_init : result: ('PING 10.2.1.23 (10.2.1.23) 56(84) bytes of data.\n\n--- 10.2.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:07:30 [DebugOK]      8. Debug success. Expected: wait_sil0_init : result: ('PING 10.3.1.23 (10.3.1.23) 56(84) bytes of data.\n\n--- 10.3.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:07:31 [DebugOK]      9. Debug success. Expected: wait_sil0_init : result: ('PING 10.1.1.50 (10.1.1.50) 56(84) bytes of data.\n\n--- 10.1.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:07:32 [DebugOK]      10. Debug success. Expected: wait_sil0_init : result: ('PING 10.2.1.50 (10.2.1.50) 56(84) bytes of data.\n\n--- 10.2.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:07:34 [DebugOK]      11. Debug success. Expected: wait_sil0_init : result: ('PING 10.3.1.50 (10.3.1.50) 56(84) bytes of data.\n\n--- 10.3.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:07:35 [DebugOK]      12. Debug success. Expected: wait_sil0_init : result: ('PING 10.253.1.23 (10.253.1.23) 56(84) bytes of data.\n\n--- 10.253.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:07:36 [DebugOK]      13. Debug success. Expected: wait_sil0_init : result: ('PING 10.254.1.23 (10.254.1.23) 56(84) bytes of data.\n\n--- 10.254.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:07:37 [DebugOK]      14. Debug success. Expected: wait_sil0_init : result: ('PING 10.255.1.23 (10.255.1.23) 56(84) bytes of data.\n\n--- 10.255.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:07:38 [DebugOK]      15. Debug success. Expected: wait_sil0_init : result: ('PING 10.253.1.50 (10.253.1.50) 56(84) bytes of data.\n\n--- 10.253.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:07:39 [DebugOK]      16. Debug success. Expected: wait_sil0_init : result: ('PING 10.254.1.50 (10.254.1.50) 56(84) bytes of data.\n\n--- 10.254.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:07:40 [DebugOK]      17. Debug success. Expected: wait_sil0_init : result: ('PING 10.255.1.50 (10.255.1.50) 56(84) bytes of data.\n\n--- 10.255.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:07:42 [DebugOK]      18. Debug success. Expected: wait_sil0_init : result: ('PING 10.1.1.23 (10.1.1.23) 56(84) bytes of data.\n\n--- 10.1.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:07:43 [DebugOK]      19. Debug success. Expected: wait_sil0_init : result: ('PING 10.2.1.23 (10.2.1.23) 56(84) bytes of data.\n\n--- 10.2.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:07:44 [DebugOK]      20. Debug success. Expected: wait_sil0_init : result: ('PING 10.3.1.23 (10.3.1.23) 56(84) bytes of data.\n\n--- 10.3.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:07:45 [DebugOK]      21. Debug success. Expected: wait_sil0_init : result: ('PING 10.1.1.50 (10.1.1.50) 56(84) bytes of data.\n\n--- 10.1.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:07:46 [DebugOK]      22. Debug success. Expected: wait_sil0_init : result: ('PING 10.2.1.50 (10.2.1.50) 56(84) bytes of data.\n\n--- 10.2.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:07:47 [DebugOK]      23. Debug success. Expected: wait_sil0_init : result: ('PING 10.3.1.50 (10.3.1.50) 56(84) bytes of data.\n\n--- 10.3.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:07:49 [DebugOK]      24. Debug success. Expected: wait_sil0_init : result: ('PING 10.253.1.23 (10.253.1.23) 56(84) bytes of data.\n\n--- 10.253.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:07:50 [DebugOK]      25. Debug success. Expected: wait_sil0_init : result: ('PING 10.254.1.23 (10.254.1.23) 56(84) bytes of data.\n\n--- 10.254.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:07:51 [DebugOK]      26. Debug success. Expected: wait_sil0_init : result: ('PING 10.255.1.23 (10.255.1.23) 56(84) bytes of data.\n\n--- 10.255.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:07:52 [DebugOK]      27. Debug success. Expected: wait_sil0_init : result: ('PING 10.253.1.50 (10.253.1.50) 56(84) bytes of data.\n\n--- 10.253.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:07:53 [DebugOK]      28. Debug success. Expected: wait_sil0_init : result: ('PING 10.254.1.50 (10.254.1.50) 56(84) bytes of data.\n\n--- 10.254.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:07:54 [DebugOK]      29. Debug success. Expected: wait_sil0_init : result: ('PING 10.255.1.50 (10.255.1.50) 56(84) bytes of data.\n\n--- 10.255.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:07:56 [DebugOK]      30. Debug success. Expected: wait_sil0_init : result: ('PING 10.1.1.23 (10.1.1.23) 56(84) bytes of data.\n\n--- 10.1.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:07:57 [DebugOK]      31. Debug success. Expected: wait_sil0_init : result: ('PING 10.2.1.23 (10.2.1.23) 56(84) bytes of data.\n\n--- 10.2.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:07:58 [DebugOK]      32. Debug success. Expected: wait_sil0_init : result: ('PING 10.3.1.23 (10.3.1.23) 56(84) bytes of data.\n\n--- 10.3.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:07:59 [DebugOK]      33. Debug success. Expected: wait_sil0_init : result: ('PING 10.1.1.50 (10.1.1.50) 56(84) bytes of data.\n\n--- 10.1.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:07:59 [DebugOK]      34. Debug success. Expected: wait_sil0_init : result: ('PING 10.2.1.50 (10.2.1.50) 56(84) bytes of data.\n64 bytes from 10.2.1.50: icmp_seq=1 ttl=64 time=0.222 ms\n\n--- 10.2.1.50 ping statistics ---\n1 packets transmitted, 1 received, 0% packet loss, time 0ms\nrtt min/avg/max/mdev = 0.222/0.222/0.222/0.000 ms\n', '') | Obtained: N/A
+2025-03-04 00:07:59 [DebugOK]      35. Debug success. Expected: 10.2.1.50: SIL0 Linux is initialised. | Obtained: N/A
+2025-03-04 00:07:59 [DebugOK]      36. Debug success. Expected: wait_sil0_init : result: ('PING 10.3.1.50 (10.3.1.50) 56(84) bytes of data.\n64 bytes from 10.3.1.50: icmp_seq=1 ttl=64 time=0.188 ms\n\n--- 10.3.1.50 ping statistics ---\n1 packets transmitted, 1 received, 0% packet loss, time 0ms\nrtt min/avg/max/mdev = 0.188/0.188/0.188/0.000 ms\n', '') | Obtained: N/A
+2025-03-04 00:07:59 [DebugOK]      37. Debug success. Expected: 10.3.1.50: SIL0 Linux is initialised. | Obtained: N/A
+2025-03-04 00:08:00 [DebugOK]      38. Debug success. Expected: wait_sil0_init : result: ('PING 10.253.1.23 (10.253.1.23) 56(84) bytes of data.\n\n--- 10.253.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:08:02 [DebugOK]      39. Debug success. Expected: wait_sil0_init : result: ('PING 10.254.1.23 (10.254.1.23) 56(84) bytes of data.\n\n--- 10.254.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:08:03 [DebugOK]      40. Debug success. Expected: wait_sil0_init : result: ('PING 10.255.1.23 (10.255.1.23) 56(84) bytes of data.\n\n--- 10.255.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:08:04 [DebugOK]      41. Debug success. Expected: wait_sil0_init : result: ('PING 10.253.1.50 (10.253.1.50) 56(84) bytes of data.\n\n--- 10.253.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:08:05 [DebugOK]      42. Debug success. Expected: wait_sil0_init : result: ('PING 10.1.1.23 (10.1.1.23) 56(84) bytes of data.\n\n--- 10.1.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:08:05 [DebugOK]      43. Debug success. Expected: wait_sil0_init : result: ('PING 10.2.1.23 (10.2.1.23) 56(84) bytes of data.\n64 bytes from 10.2.1.23: icmp_seq=1 ttl=64 time=0.192 ms\n\n--- 10.2.1.23 ping statistics ---\n1 packets transmitted, 1 received, 0% packet loss, time 0ms\nrtt min/avg/max/mdev = 0.192/0.192/0.192/0.000 ms\n', '') | Obtained: N/A
+2025-03-04 00:08:05 [DebugOK]      44. Debug success. Expected: 10.2.1.23: SIL0 Linux is initialised. | Obtained: N/A
+2025-03-04 00:08:06 [DebugOK]      45. Debug success. Expected: wait_sil0_init : result: ('PING 10.3.1.23 (10.3.1.23) 56(84) bytes of data.\n\n--- 10.3.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:08:08 [DebugOK]      46. Debug success. Expected: wait_sil0_init : result: ('PING 10.1.1.50 (10.1.1.50) 56(84) bytes of data.\n\n--- 10.1.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:08:09 [DebugOK]      47. Debug success. Expected: wait_sil0_init : result: ('PING 10.253.1.23 (10.253.1.23) 56(84) bytes of data.\n\n--- 10.253.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:08:10 [DebugOK]      48. Debug success. Expected: wait_sil0_init : result: ('PING 10.255.1.23 (10.255.1.23) 56(84) bytes of data.\n\n--- 10.255.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:08:11 [DebugOK]      49. Debug success. Expected: wait_sil0_init : result: ('PING 10.253.1.50 (10.253.1.50) 56(84) bytes of data.\n\n--- 10.253.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:08:12 [DebugOK]      50. Debug success. Expected: wait_sil0_init : result: ('PING 10.1.1.23 (10.1.1.23) 56(84) bytes of data.\n\n--- 10.1.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:08:12 [DebugOK]      51. Debug success. Expected: wait_sil0_init : result: ('PING 10.3.1.23 (10.3.1.23) 56(84) bytes of data.\n64 bytes from 10.3.1.23: icmp_seq=1 ttl=64 time=0.183 ms\n\n--- 10.3.1.23 ping statistics ---\n1 packets transmitted, 1 received, 0% packet loss, time 0ms\nrtt min/avg/max/mdev = 0.183/0.183/0.183/0.000 ms\n', '') | Obtained: N/A
+2025-03-04 00:08:12 [DebugOK]      52. Debug success. Expected: 10.3.1.23: SIL0 Linux is initialised. | Obtained: N/A
+2025-03-04 00:08:13 [DebugOK]      53. Debug success. Expected: wait_sil0_init : result: ('PING 10.1.1.50 (10.1.1.50) 56(84) bytes of data.\n\n--- 10.1.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:08:15 [DebugOK]      54. Debug success. Expected: wait_sil0_init : result: ('PING 10.253.1.23 (10.253.1.23) 56(84) bytes of data.\n\n--- 10.253.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:08:16 [DebugOK]      55. Debug success. Expected: wait_sil0_init : result: ('PING 10.253.1.50 (10.253.1.50) 56(84) bytes of data.\n\n--- 10.253.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:08:17 [DebugOK]      56. Debug success. Expected: wait_sil0_init : result: ('PING 10.1.1.23 (10.1.1.23) 56(84) bytes of data.\n\n--- 10.1.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:08:18 [DebugOK]      57. Debug success. Expected: wait_sil0_init : result: ('PING 10.1.1.50 (10.1.1.50) 56(84) bytes of data.\n\n--- 10.1.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:08:19 [DebugOK]      58. Debug success. Expected: wait_sil0_init : result: ('PING 10.253.1.23 (10.253.1.23) 56(84) bytes of data.\n\n--- 10.253.1.23 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:08:20 [DebugOK]      59. Debug success. Expected: wait_sil0_init : result: ('PING 10.253.1.50 (10.253.1.50) 56(84) bytes of data.\n\n--- 10.253.1.50 ping statistics ---\n1 packets transmitted, 0 received, 100% packet loss, time 1000ms\n\n', '') | Obtained: N/A
+2025-03-04 00:08:21 [DebugOK]      60. Debug success. Expected: wait_sil0_init : result: ('PING 10.1.1.23 (10.1.1.23) 56(84) bytes of data.\n64 bytes from 10.1.1.23: icmp_seq=1 ttl=64 time=0.606 ms\n\n--- 10.1.1.23 ping statistics ---\n1 packets transmitted, 1 received, 0% packet loss, time 0ms\nrtt min/avg/max/mdev = 0.606/0.606/0.606/0.000 ms\n', '') | Obtained: N/A
+2025-03-04 00:08:21 [DebugOK]      61. Debug success. Expected: 10.1.1.23: SIL0 Linux is initialised. | Obtained: N/A
+2025-03-04 00:08:21 [DebugOK]      62. Debug success. Expected: wait_sil0_init : result: ('PING 10.1.1.50 (10.1.1.50) 56(84) bytes of data.\n64 bytes from 10.1.1.50: icmp_seq=1 ttl=64 time=0.077 ms\n\n--- 10.1.1.50 ping statistics ---\n1 packets transmitted, 1 received, 0% packet loss, time 0ms\nrtt min/avg/max/mdev = 0.077/0.077/0.077/0.000 ms\n', '') | Obtained: N/A
+2025-03-04 00:08:21 [DebugOK]      63. Debug success. Expected: 10.1.1.50: SIL0 Linux is initialised. | Obtained: N/A
+2025-03-04 00:08:21 [DebugOK]      64. Debug success. Expected: SIL0 Linux are initialised. SIL0 Linux init = [True, True, True, True, True, True]. SIL0 Linux ip = ['10.1.1.23', '10.2.1.23', '10.3.1.23', '10.1.1.50', '10.2.1.50', '10.3.1.50'] | Obtained: N/A
+2025-03-04 00:08:21 [DebugOK]      65. Debug success. Expected: ssh -F /public/rajeshkv_Testbench53_view_Linux/projets/moon/test/scenarios/functional/config/ssh/ssh_config root@10.3.1.23 mkdir /tmp/sda5 executed on 10.3.1.23 | Obtained: EOF
+2025-03-04 00:08:22 [DebugOK]      66. Debug success. Expected: ssh -F /public/rajeshkv_Testbench53_view_Linux/projets/moon/test/scenarios/functional/config/ssh/ssh_config root@10.3.1.23 mount /dev/sda5 /tmp/sda5 executed on 10.3.1.23 | Obtained: EOF
+2025-03-04 00:08:22 [DebugOK]      67. Debug success. Expected: ssh -F /public/rajeshkv_Testbench53_view_Linux/projets/moon/test/scenarios/functional/config/ssh/ssh_config root@10.3.1.23 sed -i 's/timeout=.*/timeout=1/' /tmp/sda5/boot/grub/grub.cfg executed on 10.3.1.23 | Obtained: EOF
+2025-03-04 00:08:22 [DebugOK]      68. Debug success. Expected: ssh -F /public/rajeshkv_Testbench53_view_Linux/projets/moon/test/scenarios/functional/config/ssh/ssh_config root@10.3.1.23 sync executed on 10.3.1.23 | Obtained: EOF
+2025-03-04 00:08:23 [DebugOK]      69. Debug success. Expected: ssh -F /public/rajeshkv_Testbench53_view_Linux/projets/moon/test/scenarios/functional/config/ssh/ssh_config root@10.3.1.23 echo 3 > /proc/sys/vm/drop_caches executed on 10.3.1.23 | Obtained: EOF
+2025-03-04 00:08:27 [DebugOK]      70. Debug success. Expected: 10.3.1.23 : Setting grub timeout to (1,) | Obtained: N/A
+2025-03-04 00:08:28     [Log]    5. Comment: Power-off MooN
+2025-03-04 00:08:28 [DebugOK]      71. Debug success. Expected: IPX800 return success | Obtained: OK
+2025-03-04 00:08:32 [DebugOK]      72. Debug success. Expected: TestAppli is stopped on SCU1 SCU2 | Obtained: True
+2025-03-04 00:08:32 [Success]    6. Assertion success. Expected: Grub has been modified | Obtained: True
+2025-03-04 00:08:32     [Log]  11. Step: Check MooN initialisation upon power on in nominal mode on single SCU with successive start of channels
+2025-03-04 00:08:32 [DebugOK]      1. Debug success. Expected: TSHARK: get_frames : filter ('tshark', '-r', '/public/rajeshkv_Testbench53_view_Linux/projets/moon/test/scenarios/functional/traces/TC_Sy_PWR_ON_CH_INIT_002_TARGET/Capture_napa2-napa0_spec_conf_0_filtered_reordered.pcap', '-R', 'test_protocol or t_ch_info or t_cycle_start_cmd or t_com_msg.comid == 4094 and not icmp', '-t', 'ad', '-o', 'column.format:Itf,%Cus:frame.interface_id,No.,%m,Time,%t,HwSrc,%hs,HwDst,%hd,Source,%s,Destination,%d,Protocol,%p,SourcePort,%S,DestinationPort,%D,Length,%L,QOS,%Cus:ip.dsfield,Info,%i', '-n') | Obtained: True
+2025-03-04 00:08:33 [DebugOK]      2. Debug success. Expected: TSHARK: get_frames : End of calling TShark | Obtained: True
+2025-03-04 00:08:34 [DebugOK]      3. Debug success. Expected: TSHARK: get_frames : End | Obtained: True
+2025-03-04 00:08:34 [Success]    1. Assertion success. Expected: CH1A : goes in running mode  | Obtained: True
+2025-03-04 00:08:34 [Success]    2. Assertion success. Expected: CH1A : Number of received frames is equal or greater than 50.0(5% margin of error) | Obtained: 203
+2025-03-04 00:08:34 [Success]    3. Assertion success. Expected: CH1A: MSSL transmitter type fields are equal to 1 : number of invalid transmitter type = 0  | Obtained: 0
+2025-03-04 00:08:34 [Success]    4. Assertion success. Expected: CH1B : goes in running mode  | Obtained: True
+2025-03-04 00:08:34 [Success]    5. Assertion success. Expected: CH1B : Number of received frames is equal or greater than 50.0(5% margin of error) | Obtained: 203
+2025-03-04 00:08:34 [Success]    6. Assertion success. Expected: CH1B: MSSL transmitter type fields are equal to 2 : number of invalid transmitter type = 0  | Obtained: 0
+2025-03-04 00:08:34 [Success]    7. Assertion success. Expected: Channel A and B MSSL jk sacem fields are complimentary frame by frame : number of invalid jk sacem complementarity = 0 | Obtained: 0
+2025-03-04 00:08:34 [Success]    8. Assertion success. Expected: Channel A and B MSSL jk fsfb2 fields are complimentary frame by frame : number of invalid jk fsfb2 complementarity = 0 | Obtained: 0
+2025-03-04 00:08:34 [Success]    9. Assertion success. Expected: (CR0558) :For both channels, RTC_time is initialized to 2000-01-01 00:00:00 | Obtained: 0
+2025-03-04 00:08:34 [Success]    10. Assertion success. Expected: All app test field in BIT are correct in init and running | Obtained: 0
+2025-03-04 00:08:34 [Success]    11. Assertion success. Expected: All nvmem field in BIT are correct in init and running | Obtained: 0
+2025-03-04 00:08:34 [Success]    12. Assertion success. Expected: All app test field in BIT are correct in init and running | Obtained: 0
+2025-03-04 00:08:34 [Success]  *** Test result is OK  for TC_Sy_PWR_ON_CH_INIT_002.py
+2025-03-04 00:08:34 [DebugOK]      4. Debug success. Expected: TSHARK close: Force dumpcap processes to close | Obtained: N/A
+2025-03-04 00:08:34 [DebugOK]      16. Debug success. Expected: ThreadReceive: Thread finished | Obtained: N/A
+2025-03-04 00:08:34 [DebugOK]      5. Debug success. Expected: ThreadDecode: Thread finished | Obtained: N/A
+2025-03-04 00:08:34     [Log]    13. Comment: Stop Cyber syslog
+2025-03-04 00:08:35 [DebugOK]      6. Debug success. Expected: Run 'sudo service syslog-ng stop'. Returns 'Stopping syslog-ng: [60G[[0;32m  OK  [0;39m]' | Obtained: N/A
+2025-03-04 00:08:35     [Log]    14. Comment: Start Cyber syslog
+2025-03-04 00:08:35 [DebugOK]      7. Debug success. Expected: Run 'sudo service syslog-ng start'. Returns 'Starting syslog-ng: [60G[[0;32m  OK  [0;39m]' | Obtained: N/A

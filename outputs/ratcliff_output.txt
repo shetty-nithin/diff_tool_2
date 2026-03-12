@@ -1,0 +1,9 @@
+[DELETED] 2026-03-06 10:00:02 INFO Loading configuration from /etc/app/config.yml this line will be deleted
+[DELETED] 2026-03-06 10:04:20 WARN Disk usage at 80% on /dev/sda1
+[INSERTED] 2026-03-06 10:03:20 INFO Job scheduler triggered job_id=9001
+[INSERTED] 2026-03-06 10:03:20 INFO Job scheduler triggered job_id=9001
+[UPDATED][Similarity: 0.314] 2026-03-06 10:03:20 INFO Job scheduler triggered job_id=9001  ->  2026-03-06 10:04:20 WARN Disk usage at 80% on /dev/sda1 updated or inserted
+[MOVED] 2026-03-06 10:04:01 INFO User 105 logged in from 192.168.1.25 moved
+[MOVED] 2026-03-06 10:04:05 INFO File dashboard.json opened by user 105 moved
+[MOVED] 2026-03-06 10:04:10 INFO API request GET /api/metrics user=105 moved
+[MOVED] 2026-03-06 10:04:15 INFO API request GET /api/orders user=102 moved
