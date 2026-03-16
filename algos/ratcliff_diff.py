@@ -30,8 +30,8 @@ def ratcliff_diff(file_a, file_b, output_file):
             out.write("Files are semantically identical.")
         return
 
-    removed = []
     added = []
+    removed = []
     updated = []
     unchanged = []
 
@@ -85,16 +85,22 @@ def ratcliff_diff(file_a, file_b, output_file):
             still_removed.append(i) # Final removed list
 
     with open(output_file, "w", encoding="utf-8") as out:
+        out.write("-----------------------------------------\n")
+        out.write("Diff Summary\n")
+        out.write("-----------------------------------------\n")
+        out.write(f"Lines compared : {max(len(norm_a), len(norm_b))}\n")
+        out.write(f"Inserted       : {len(still_added)}\n")
+        out.write(f"Deleted        : {len(still_removed)}\n")
+        out.write(f"Updated        : {len(updated)}\n")
+        out.write(f"Moved          : {len(moved)}\n")
+        out.write("-----------------------------------------\n\n")
 
         for i in still_removed:
-            out.write(f"[DELETED] {orig_a[i]}\n")
-
+            out.write(f"[DELETED]  {orig_a[i]}\n")
         for j in still_added:
             out.write(f"[INSERTED] {orig_b[j]}\n")
-
         for i, j in updated:
             line_sim = SequenceMatcher(None, norm_a[i], norm_b[j]).ratio()
             out.write(f"[UPDATED][Similarity: {line_sim:.3f}] {orig_a[i]}  ->  {orig_b[j]}\n")
-
         for i, j in moved:
             out.write(f"[MOVED] {orig_a[i]}\n")
