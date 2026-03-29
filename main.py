@@ -17,7 +17,6 @@ def main():
             "patience": patience_diff
     }
 
-
     if len(sys.argv) < 2:
         print("Execute: python main.py [hash | heckel | ladiff | ratcliff]")
         return
@@ -26,7 +25,7 @@ def main():
 
     if algo_name in algorithms:
         start_time = time.perf_counter()
-        algorithms[algo_name](file_1, file_2, f"outputs/{algo_name}_output.txt")
+        algorithms[algo_name](file_1, file_2, f"outputs/{algo_name}_output")
         end_time = time.perf_counter()
 
         print("\n" + "\033[92m" + " Diff generated successfully ".center(50,"-"))

@@ -946,9 +946,11 @@
 <46>1 2021-01-18T09:03:41.000+00:00 MOON_SCU2 moon   -     9.302045] systemd-journald[580]: Data hash table of /run/log/journal/a8fe0414ff5d495fa20a33080df6c1fc/system.journal has a fill level at 75.0 (3104 of 4138 items, 2383872 file size, 768 bytes per hash table item), suggesting rotation.
 <46>1 2021-01-18T09:03:41.000+00:00 MOON_SCU2 moon   -     9.302107] systemd-journald[580]: /run/log/journal/a8fe0414ff5d495fa20a33080df6c1fc/system.journal: Journal header limits reached or header out-of-date, rotating.
 <46>1 2021-01-18T09:03:41.000+00:00 MOON_SCU2 moon   -     9.451903] systemd-journald[580]: Time jumped backwards, rotating.
+
 <5>1 2021-01-18T09:03:41.000+00:00 MOON_SCU2 moon kernel  -  [    9.881916] audit: type=1305 audit(1610960529.424:73): op=set audit_pid=0 old=727 auid=4294967295 ses=4294967295 subj=unconfined res=1
 <5>1 2021-01-18T09:03:41.000+00:00 MOON_SCU2 moon kernel  -  [    9.903177] audit: type=1130 audit(1610960529.448:74): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg='unit=cyber.secu.lighttpd comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
 <5>1 2021-01-18T09:03:41.001+00:00 MOON_SCU2 moon kernel  -  [   10.024160] audit: type=1131 audit(1610960529.568:75): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg='unit=auditd comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+
 <3>1 2021-01-18T09:03:41.001+00:00 MOON_SCU2 moon kernel  -  [   10.963191] ip_local_port_range: prefer different parity for start/end values.
 <12>1 2021-01-18T09:03:41.001+00:00 MOON_SCU2 moon   -    12.198402] [[00;32m[1m OK [00m][moon_tune_net.sh - 2021/01/18 09:02:11] >>> sysctl -w net.core.rmem_max=16777216
 <12>1 2021-01-18T09:03:41.001+00:00 MOON_SCU2 moon   -    12.201604] net.core.rmem_max = 16777216
