@@ -2,8 +2,8 @@
 <6>1 2021-01-18T09:02:24.766+00:00 MooN_SCU2 moon kernel  -  [    0.000000] Command line: BOOT_IMAGE=/baseline/boot/vmlinuz boot=moon slab_common.usercopy_fallback=Y systemd.hostname=moon isolcpus=1 ipv6.disable=1 systemd.unified_cgroup_hierarchy=false systemd.legacy_systemd_cgroup_controller=false
 <7>1 2021-01-18T09:02:24.766+00:00 MooN_SCU2 moon kernel  -  [    0.000000] reserving inaccessible SNB gfx pages
 <6>1 2021-01-18T09:02:24.766+00:00 MooN_SCU2 moon kernel  -  [    0.000000] BIOS-provided physical RAM map:
-<6>1 2021-01-18T09:02:24.766+00:00 MooN_SCU2 moon kernel  -  [    0.000000] BIOS-e820: [mem 0x000000000009b400-0x000000000009ffff] reserved
-<6>1 2021-01-18T09:02:24.766+00:00 MooN_SCU2 moon kernel  -  [    0.000000] BIOS-e820: [mem 0x0000000000000000-0x000000000009b3ff] Nithin
+<6>1 2021-01-18T09:02:24.766+00:00 MooN_SCU2 moon kernel  -  [    0.000000] BIOS-e820: [mem 0x000000000009b400-0x000000000009ffff] Nithin
+<6>1 2021-01-18T09:02:24.766+00:00 MooN_SCU2 moon kernel  -  [    0.000000] BIOS-e820: [mem 0x0000000000000000-0x000000000009b3ff] usable
 <6>1 2021-01-18T09:02:24.766+00:00 MooN_SCU2 moon kernel  -  [    0.000000] BIOS-e820: [mem 0x00000000000e0000-0x00000000000fffff] reserved
 <6>1 2021-01-18T09:02:24.766+00:00 MooN_SCU2 moon kernel  -  [    0.000000] BIOS-e820: [mem 0x0000000000100000-0x000000001fffffff] usable
 <6>1 2021-01-18T09:02:24.766+00:00 MooN_SCU2 moon kernel  -  [    0.000000] BIOS-e820: [mem 0x0000000020000000-0x00000000201fffff] reserved
@@ -944,6 +944,7 @@
 <46>1 2021-01-18T09:02:24.801+00:00 MooN_SCU2 moon   -     9.410725] systemd-journald[577]: Data hash table of /run/log/journal/adf272cb2e58401389c2eb4cf4a9108b/system.journal has a fill level at 75.0 (3105 of 4138 items, 2383872 file size, 767 bytes per hash table item), suggesting rotation.
 <46>1 2021-01-18T09:02:24.801+00:00 MooN_SCU2 moon   -     9.410859] systemd-journald[577]: /run/log/journal/adf272cb2e58401389c2eb4cf4a9108b/system.journal: Journal header limits reached or header out-of-date, rotating.
 <46>1 2021-01-18T09:02:24.801+00:00 MooN_SCU2 moon   -     9.606726] systemd-journald[577]: Time jumped backwards, rotating.
+
 <3>1 2021-01-18T09:02:24.801+00:00 MooN_SCU2 moon kernel  -  [   11.111332] ip_local_port_range: prefer different parity for start/end values.
 <12>1 2021-01-18T09:02:24.801+00:00 MooN_SCU2 moon   -    12.320589] [[00;32m[1m OK [00m][moon_tune_net.sh - 2021/01/18 09:02:11] >>> sysctl -w net.core.rmem_max=16777216
 <12>1 2021-01-18T09:02:24.801+00:00 MooN_SCU2 moon   -    12.334367] net.core.rmem_max = 16777216

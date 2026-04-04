@@ -5,7 +5,7 @@ from collections import defaultdict
 import bisect
 
 def patience_diff(file_a, file_b, output_file):
-    is_updated_required = True
+    is_updated_required = False
     is_html_output = True
 
     def load_file(path):
@@ -68,10 +68,10 @@ def patience_diff(file_a, file_b, output_file):
         stack_tops = []
 
         for i, (_, b_j) in enumerate(matches):
-            pos = bisect.bisect_left(stacks, b_j)
+            pos = bisect.bisect_left(stacks, b_j) #binary search
 
             if pos == len(stacks):
-                stacks.append(b_j)
+                stacks.append(b_j) # creating a new stack
                 stack_tops.append(i)
             else:
                 stacks[pos] = b_j
@@ -94,7 +94,6 @@ def patience_diff(file_a, file_b, output_file):
             head.append(("UNCHANGED", s.a_low, s.b_low))
             s.a_low += 1 
             s.b_low += 1 
-
     def match_tail(s, tail):
         temp = []
         while s.not_empty() and norm_a[s.a_high - 1] == norm_b[s.b_high - 1]:
@@ -125,19 +124,20 @@ def patience_diff(file_a, file_b, output_file):
         return ops
 
     def diff(s):
-        head = []
-        tail = []
+        #head = []
+        #tail = []
 
-        match_head(s, head)
-        match_tail(s, tail)
-        if not s.not_empty(): # if all the lines are matching
-            return head + tail
+        #match_head(s, head)
+        #match_tail(s, tail)
+        #if not s.not_empty(): # if all the lines are matching
+            #return head + tail
 
         result = []
         matches = unique_matches(s)
         if not matches: # if no matches found, send for diff generation using python's inbuilt SequenceMatcher
             result.extend(fallback(s))
-            return head + result + tail
+            #return head + result + tail
+            return result
 
         anchors = longest_increasing_sequence(matches)
         
@@ -156,7 +156,8 @@ def patience_diff(file_a, file_b, output_file):
         sub = Slice(a_curr, s.a_high, b_curr, s.b_high) # from last anchor to last line of the slice/document
         result.extend(diff(sub))
 
-        return head + result + tail
+        #return head + result + tail
+        return result
 
     ops = diff(Slice(0, len(norm_a), 0, len(norm_b)))
 
@@ -166,7 +167,7 @@ def patience_diff(file_a, file_b, output_file):
     moved = []
     updated = []
 
-    for op in ops:
+    for op in ops: # op = (operation, line)
         if op[0] == "INSERT":
             inserted.append(op[1])
         elif op[0] == "DELETE":
@@ -174,11 +175,11 @@ def patience_diff(file_a, file_b, output_file):
 
     insert_map = defaultdict(list)
     for j in inserted:
-        insert_map[norm_b[j]].append(j)
+        insert_map[norm_b[j]].append(j) # single line can be present multiple times {line: (indices)}
 
     remaining_deleted = []
     for i in deleted:
-        if insert_map[norm_a[i]]:
+        if insert_map[norm_a[i]]: # if the deleted line is present in the insert_map
             j = insert_map[norm_a[i]].pop(0)
             moved.append((i, j))
         else:
@@ -201,7 +202,7 @@ def patience_diff(file_a, file_b, output_file):
                     best_ratio = sim
                     best_j = j
 
-            if best_j is not None and best_ratio > 0.75:
+            if best_j is not None and best_ratio > 0.20:
                 updated.append((i, best_j, best_ratio))
                 remaining_inserted.remove(best_j)
             else:

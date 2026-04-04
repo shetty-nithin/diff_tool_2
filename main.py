@@ -7,8 +7,8 @@ from algos.ratcliff_diff import ratcliff_diff
 from algos.patience_diff import patience_diff
 
 def main():
-    file_1 = "inputs/kern-1.log"
-    file_2 = "inputs/kern-2.log"
+    file_1 = "inputs/A.txt"
+    file_2 = "inputs/A copy.txt"
     algorithms = {
             "hash": hash_diff,
             "heckel": heckel_diff,
@@ -30,7 +30,7 @@ def main():
 
         print("\n" + "\033[92m" + " Diff generated successfully ".center(50,"-"))
         print(f"{'Algorithm':15}: {algo_name} algorithm")
-        print(f"{'Output':15}: outputs/{algo_name}_output.txt")
+        print(f"{'Output':15}: outputs/{algo_name}_output(html/txt)")
         print(f"{'Execution time':15}: {end_time - start_time:.6f}s")
         print("-"*50 + "\033[0m" + "\n")
     else:
