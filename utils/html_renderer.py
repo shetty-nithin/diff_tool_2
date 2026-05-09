@@ -45,6 +45,10 @@ def render_diff_to_html(ops, file_a, file_b, output_path, stats):
                 .empty {{
                     background-color: #fafafa;
                 }}
+                .moved {{
+                    background-color: #FFF9C4;
+                    border-left: 4px solid #e6b800;
+                }}
                 .title-bar {{
                     font-weight: bold;
                     background: #f6f8fa;
@@ -80,7 +84,12 @@ def render_diff_to_html(ops, file_a, file_b, output_path, stats):
         elif op == "UPDATED":
             rows.append(f'<div class="cell deleted">{txt_a}</div><div class="cell added">{txt_b}</div>')
         elif op == "MOVED":
-            rows.append(f'<div class="cell" style="background:#fff3cd">{txt_a}</div><div class="cell" style="background:#fff3cd">{txt_b}</div>')
+            class_a = "cell moved" if txt_a else "cell empty"
+            class_b = "cell moved" if txt_b else "cell empty"
+            rows.append(
+                f'<div class="{class_a}">{txt_a}</div>'
+                f'<div class="{class_b}">{txt_b}</div>'
+            )
 
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(html_template.format(fa=file_a, fb=file_b, ins=stats['ins'], rem=stats['del'], rows="".join(rows)))

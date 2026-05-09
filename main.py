@@ -7,8 +7,8 @@ from algos.ratcliff_diff import ratcliff_diff
 from algos.patience_diff import patience_diff
 
 def main():
-    file_1 = "inputs/A.txt"
-    file_2 = "inputs/A copy.txt"
+    file_1 = "inputs/kern-1.log"
+    file_2 = "inputs/kern-1 copy.log"
     algorithms = {
             "hash": hash_diff,
             "heckel": heckel_diff,

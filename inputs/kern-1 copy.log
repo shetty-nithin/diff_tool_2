@@ -2,8 +2,8 @@
 <6>1 2021-01-18T09:02:24.766+00:00 MooN_SCU2 moon kernel  -  [    0.000000] Command line: BOOT_IMAGE=/baseline/boot/vmlinuz boot=moon slab_common.usercopy_fallback=Y systemd.hostname=moon isolcpus=1 ipv6.disable=1 systemd.unified_cgroup_hierarchy=false systemd.legacy_systemd_cgroup_controller=false
 <7>1 2021-01-18T09:02:24.766+00:00 MooN_SCU2 moon kernel  -  [    0.000000] reserving inaccessible SNB gfx pages
 <6>1 2021-01-18T09:02:24.766+00:00 MooN_SCU2 moon kernel  -  [    0.000000] BIOS-provided physical RAM map:
-<6>1 2021-01-18T09:02:24.766+00:00 MooN_SCU2 moon kernel  -  [    0.000000] BIOS-e820: [mem 0x000000000009b400-0x000000000009ffff] Nithin
 <6>1 2021-01-18T09:02:24.766+00:00 MooN_SCU2 moon kernel  -  [    0.000000] BIOS-e820: [mem 0x0000000000000000-0x000000000009b3ff] usable
+<6>1 2021-01-18T09:02:24.766+00:00 MooN_SCU2 moon kernel  -  [    0.000000] BIOS-e820: [mem 0x000000000009b400-0x000000000009ffff] reserved
 <6>1 2021-01-18T09:02:24.766+00:00 MooN_SCU2 moon kernel  -  [    0.000000] BIOS-e820: [mem 0x00000000000e0000-0x00000000000fffff] reserved
 <6>1 2021-01-18T09:02:24.766+00:00 MooN_SCU2 moon kernel  -  [    0.000000] BIOS-e820: [mem 0x0000000000100000-0x000000001fffffff] usable
 <6>1 2021-01-18T09:02:24.766+00:00 MooN_SCU2 moon kernel  -  [    0.000000] BIOS-e820: [mem 0x0000000020000000-0x00000000201fffff] reserved
@@ -24,11 +24,11 @@
 <6>1 2021-01-18T09:02:24.771+00:00 MooN_SCU2 moon kernel  -  [    0.000000] BIOS-e820: [mem 0x000000007b000000-0x000000007f9fffff] reserved
 <6>1 2021-01-18T09:02:24.771+00:00 MooN_SCU2 moon kernel  -  [    0.000000] BIOS-e820: [mem 0x00000000f8000000-0x00000000fbffffff] reserved
 <6>1 2021-01-18T09:02:24.771+00:00 MooN_SCU2 moon kernel  -  [    0.000000] BIOS-e820: [mem 0x00000000fec00000-0x00000000fec00fff] reserved
-<6>1 2021-01-18T09:02:24.771+00:00 MooN_SCU2 moon kernel  -  [    0.000000] BIOS-e820: [mem 0x00000000fed10000-0x00000000fed13fff] reserved
-<6>1 2021-01-18T09:02:24.771+00:00 MooN_SCU2 moon kernel  -  [    0.000000] BIOS-e820: [mem 0x00000000fed18000-0x00000000fed19fff] reserved
 <6>1 2021-01-18T09:02:24.771+00:00 MooN_SCU2 moon kernel  -  [    0.000000] BIOS-e820: [mem 0x00000000fed1c000-0x00000000fed1ffff] reserved
 <6>1 2021-01-18T09:02:24.771+00:00 MooN_SCU2 moon kernel  -  [    0.000000] BIOS-e820: [mem 0x00000000fee00000-0x00000000fee00fff] reserved
 <6>1 2021-01-18T09:02:24.772+00:00 MooN_SCU2 moon kernel  -  [    0.000000] BIOS-e820: [mem 0x00000000ffa00000-0x00000000ffbfffff] reserved
+<6>1 2021-01-18T09:02:24.771+00:00 MooN_SCU2 moon kernel  -  [    0.000000] BIOS-e820: [mem 0x00000000fed10000-0x00000000fed13fff] reserved
+<6>1 2021-01-18T09:02:24.771+00:00 MooN_SCU2 moon kernel  -  [    0.000000] BIOS-e820: [mem 0x00000000fed18000-0x00000000fed19fff] reserved
 <6>1 2021-01-18T09:02:24.772+00:00 MooN_SCU2 moon kernel  -  [    0.000000] BIOS-e820: [mem 0x00000000ffe00000-0x00000000ffffffff] reserved
 <6>1 2021-01-18T09:02:24.772+00:00 MooN_SCU2 moon kernel  -  [    0.000000] BIOS-e820: [mem 0x0000000100000000-0x00000001005fffff] usable
 <6>1 2021-01-18T09:02:24.772+00:00 MooN_SCU2 moon kernel  -  [    0.000000] NX (Execute Disable) protection: active
@@ -68,8 +68,8 @@
 <6>1 2021-01-18T09:02:24.772+00:00 MooN_SCU2 moon kernel  -  [    0.023169] ACPI: Reserving SSDT table memory at [mem 0x7af99018-0x7af999ad]
 <6>1 2021-01-18T09:02:24.772+00:00 MooN_SCU2 moon kernel  -  [    0.023171] ACPI: Reserving DMAR table memory at [mem 0x7af9ac18-0x7af9acff]
 <6>1 2021-01-18T09:02:24.772+00:00 MooN_SCU2 moon kernel  -  [    0.023173] ACPI: Reserving SPCR table memory at [mem 0x7afe6c18-0x7afe6c67]
-<6>1 2021-01-18T09:02:24.772+00:00 MooN_SCU2 moon kernel  -  [    0.023251] No NUMA configuration found
 <6>1 2021-01-18T09:02:24.772+00:00 MooN_SCU2 moon kernel  -  [    0.023253] Faking a node at [mem 0x0000000000000000-0x00000001005fffff]
+<6>1 2021-01-18T09:02:24.772+00:00 MooN_SCU2 moon kernel  -  [    0.023251] No NUMA configuration found
 <6>1 2021-01-18T09:02:24.772+00:00 MooN_SCU2 moon kernel  -  [    0.023270] NODE_DATA(0) allocated [mem 0x1005d5000-0x1005fffff]
 <6>1 2021-01-18T09:02:24.772+00:00 MooN_SCU2 moon kernel  -  [    0.023857] Zone ranges:
 <6>1 2021-01-18T09:02:24.772+00:00 MooN_SCU2 moon kernel  -  [    0.023859]   DMA      [mem 0x0000000000001000-0x0000000000ffffff]
