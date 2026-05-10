@@ -47,6 +47,9 @@ def render_diff_to_html(ops, file_a, file_b, output_path, stats):
                 }}
                 .moved {{
                     background-color: #FFF9C4;
+                }}
+                .moved_line{{
+                    background-color: #FFF9C4;
                     border-left: 4px solid #e6b800;
                 }}
                 .title-bar {{
@@ -86,6 +89,13 @@ def render_diff_to_html(ops, file_a, file_b, output_path, stats):
         elif op == "MOVED":
             class_a = "cell moved" if txt_a else "cell empty"
             class_b = "cell moved" if txt_b else "cell empty"
+            rows.append(
+                f'<div class="{class_a}">{txt_a}</div>'
+                f'<div class="{class_b}">{txt_b}</div>'
+            )
+        elif op == "MOVED_LINE":
+            class_a = "cell moved_line" if txt_a else "cell empty"
+            class_b = "cell moved_line" if txt_b else "cell empty"
             rows.append(
                 f'<div class="{class_a}">{txt_a}</div>'
                 f'<div class="{class_b}">{txt_b}</div>'
