@@ -1,6 +1,6 @@
 import time
 import sys
-from algos.patience_diff import patience_diff
+from patience_diff import patience_diff
 
 def main():
     file_1 = "inputs/kern-1.log"

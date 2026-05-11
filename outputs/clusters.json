@@ -1,0 +1,66 @@
+{
+  "cluster_stats": {
+    "0": {
+      "count": 4,
+      "avg_distance": 0.0093,
+      "avg_similarity": 0.9812,
+      "avg_churn": 0.002,
+      "avg_move": 0.004
+    },
+    "1": {
+      "count": 1,
+      "avg_distance": 0.3082,
+      "avg_similarity": 0.5571,
+      "avg_churn": 0.4309,
+      "avg_move": 0.006
+    },
+    "2": {
+      "count": 0,
+      "avg_distance": 0.0,
+      "avg_similarity": 0.0,
+      "avg_churn": 0.0,
+      "avg_move": 0.0
+    }
+  },
+  "clusters": {
+    "0": [
+      {
+        "filename": "kern-1 copy 2.log",
+        "overall_distance": 0.0093,
+        "similarity_ratio": 0.9811881188118812,
+        "churn_ratio": 0.0019801980198019802,
+        "move_ratio": 0.0039603960396039604
+      },
+      {
+        "filename": "kern-1 copy 3.log",
+        "overall_distance": 0.0093,
+        "similarity_ratio": 0.9811881188118812,
+        "churn_ratio": 0.0019801980198019802,
+        "move_ratio": 0.0039603960396039604
+      },
+      {
+        "filename": "kern-1 copy 4.log",
+        "overall_distance": 0.0093,
+        "similarity_ratio": 0.9811881188118812,
+        "churn_ratio": 0.0019801980198019802,
+        "move_ratio": 0.0039603960396039604
+      },
+      {
+        "filename": "kern-1 copy.log",
+        "overall_distance": 0.0093,
+        "similarity_ratio": 0.9811881188118812,
+        "churn_ratio": 0.0019801980198019802,
+        "move_ratio": 0.0039603960396039604
+      }
+    ],
+    "1": [
+      {
+        "filename": "kern-2.log",
+        "overall_distance": 0.3082,
+        "similarity_ratio": 0.5571321882001493,
+        "churn_ratio": 0.43091859596713966,
+        "move_ratio": 0.00597460791635549
+      }
+    ]
+  }
+}

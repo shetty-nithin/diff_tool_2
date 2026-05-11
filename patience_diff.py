@@ -70,7 +70,7 @@ def patience_diff(file_a, file_b, output_file):
             if key not in counts:
                 counts[key] = [0, 0, None, None]
             counts[key][0] += 1
-            if counts[key][2] is None:      # record first occurrence in A
+            if counts[key][2] is None:  # record first occurrence in A
                 counts[key][2] = i
 
         for j in range(s.b_low, s.b_high):
@@ -78,12 +78,12 @@ def patience_diff(file_a, file_b, output_file):
             if key not in counts:
                 counts[key] = [0, 0, None, None]
             counts[key][1] += 1
-            if counts[key][3] is None:      # record first occurrence in B
+            if counts[key][3] is None:  # record first occurrence in B
                 counts[key][3] = j
 
         matches = []
         for key, (c_a, c_b, a_i, b_j) in counts.items():
-            if c_a == 1 and c_b == 1:       # unique on both sides
+            if c_a == 1 and c_b == 1:   # unique on both sides
                 matches.append((a_i, b_j))
 
         return sorted(matches)              # sort by a_index
@@ -103,9 +103,9 @@ def patience_diff(file_a, file_b, output_file):
     # Algorithm: patience sort (O(n log n)).
 
     def longest_increasing_sequence(matches):
-        stacks     = []          # current top value of each stack
+        stacks     = []                     # current top value of each stack
         parent     = [None] * len(matches)  # for back-tracing
-        stack_tops = []          # index into `matches` of each stack's top
+        stack_tops = []                     # index into `matches` of each stack's top
 
         for i, (_, b_j) in enumerate(matches):
             pos = bisect.bisect_left(stacks, b_j)  # Finds the leftmost stack whose top is >= b_j (binary search)
@@ -132,9 +132,8 @@ def patience_diff(file_a, file_b, output_file):
     # =========================================================================
     # SECTION 5 — FALLBACK: SEQUENCEMATCHER
     # =========================================================================
-    # When a slice has no unique matching lines (all lines in the region
-    # appear more than once on at least one side), patience diff cannot place
-    # any anchor.  We fall back to Python's built-in SequenceMatcher to diff the slice.
+    # When a slice has no unique matching lines (all lines in the region appear more than once on at least one side), patience diff cannot place any anchor.  
+    # We fall back to Python's built-in SequenceMatcher to diff the slice.
     # The output is translated into the same (tag, index…) tuples.
 
     def fallback(s):
@@ -156,7 +155,6 @@ def patience_diff(file_a, file_b, output_file):
                 for j in range(j1, j2):
                     ops.append(("INSERT", s.b_low + j))
             elif tag == "replace":
-                # A replace is a delete block followed by an insert block
                 for i in range(i1, i2):
                     ops.append(("DELETE", s.a_low + i))
                 for j in range(j1, j2):
@@ -210,7 +208,7 @@ def patience_diff(file_a, file_b, output_file):
     # =========================================================================
     # SECTION 7 — COLLECT INITIAL INSERTS / DELETES
     # =========================================================================
-    # Walk the ops list once to separate out which A-indices were deleted and which B-indices were inserted.
+    # Go through the ops list once, to separate out which A-indices were deleted and which B-indices were inserted.
     # These are the "remaining" lines that the Patience Diff could not place as stable anchors — they are candidates for move detection in the next section.
 
     inserted = []   # B-indices not matched as UNCHANGED
@@ -224,12 +222,12 @@ def patience_diff(file_a, file_b, output_file):
             deleted.append(op[1])
 
     # =========================================================================
-    # SECTION 8 — PATIENCEDIFFPLUS MOVE DETECTION
+    # SECTION 8 — PATIENCE_DIFF_PLUS MOVE DETECTION
     # =========================================================================
     # Based on Jon Trent's PatienceDiffPlus (github.com/jonTrent/PatienceDiff).
     #
     # The algorithm:
-    #   Take the residual deleted lines (from A) and residual inserted lines (from B).
+    #   Take the remaining deleted lines (from A) and remaining inserted lines (from B).
     #   Run the Patience Diff algorithm on just these lines.
     #   Any line that matches in this second pass is a MOVED line — it existed in both files but at a different position relative to its stable neighbours.
     #   Repeat until no more matches are found.
@@ -272,7 +270,9 @@ def patience_diff(file_a, file_b, output_file):
         b_seq = [j for _, j in unique_pairs]
 
         # Standard LIS using patience sort
-        tails, tops, par = [], [], [None] * len(unique_pairs)
+        tails   = []
+        tops    = []
+        par     = [None] * len(unique_pairs)
         for idx, bj in enumerate(b_seq):
             pos = bisect.bisect_left(tails, bj)
             if pos == len(tails):
@@ -285,7 +285,8 @@ def patience_diff(file_a, file_b, output_file):
                 par[idx] = tops[pos - 1]
 
         # Trace back to get LIS indices
-        lis_set, k = set(), tops[-1] if tops else None
+        lis_set = set()
+        k       = tops[-1] if tops else None
         while k is not None:
             lis_set.add(k)
             k = par[k]
@@ -302,7 +303,7 @@ def patience_diff(file_a, file_b, output_file):
 
         return matched, new_del, new_ins
 
-    # Iteratively running PatienceDiffPlus passes until no more moves are found.
+    # Iteratively running Patience_diff_plus passes until no more moves are found.
     # Each pass may surface new unique matches among the still-unmatched lines.
     all_moves    = []   # confirmed (a_idx, b_idx) move pairs
     cur_deleted  = list(deleted)
@@ -324,7 +325,7 @@ def patience_diff(file_a, file_b, output_file):
     # =========================================================================
     # SECTION 9 — UPDATED DETECTION (optional, disabled by default)
     # =========================================================================
-    # If "is_updated_required" is True, try to pair remaining deleted lines with remaining inserted lines that have similar content (ratio > 0.75).
+    # If "is_updated_required" is True, this section will try to pair remaining deleted lines with remaining inserted lines that have similar content (ratio > 0.75).
     # These are shown as "updated" (red on left, green on right) rather than as separate delete + insert.
 
     final_deleted = []
@@ -493,3 +494,9 @@ def patience_diff(file_a, file_b, output_file):
         )
     else:
         render_diff_to_text(final_ops_html, output_file)
+
+    # =========================================================================
+    # SECTION 14 — RANKING AND CLUSTERING
+    # =========================================================================
+    from diff_vector import compute_diff_vector
+    return compute_diff_vector(final_ops_html, orig_a, orig_b)
