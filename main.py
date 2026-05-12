@@ -2,9 +2,12 @@ import time
 import sys
 from patience_diff import patience_diff
 
+import os
 def main():
     file_1 = "inputs/kern-1.log"
     file_2 = "inputs/kern-1 copy.log"
+
+    os.makedirs("outputs", exist_ok=True)
 
     start_time = time.perf_counter()
     patience_diff(file_1, file_2, f"outputs/patience_output")

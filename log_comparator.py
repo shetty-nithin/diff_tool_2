@@ -35,13 +35,14 @@ class LogComparator:
     clusters   : dict  { filename -> cluster_label }  populated by cluster()
     """
 
-    def __init__(self, baseline: str, output_dir: str = "outputs/"):
+    def __init__(self, baseline: str, output_dir: str):
         self.baseline   = baseline
         self.output_dir = output_dir
         self.results    = {}   # { filename: DiffVector } => Populated by compare_all()
         self.clusters   = {}   # { filename: cluster_label } => Populated by cluster()
 
         os.makedirs(output_dir, exist_ok=True)
+        os.makedirs(os.path.join("outputs", "graphs"), exist_ok=True)
 
     # =========================================================================
     # Compare all files in a "inputs" directory against the baseline
@@ -328,7 +329,7 @@ class LogComparator:
         pca_obj    = PCA(n_components=2).fit(X_scaled)
         var        = pca_obj.explained_variance_ratio_
         n_clusters = max(labels) + 1
-        palette    = plt.cm.get_cmap("tab10", n_clusters)
+        palette    = matplotlib.colormaps["tab10"]
 
         fig, ax = plt.subplots(figsize=(10, 7))
         fig.patch.set_facecolor("#F8F9FA")
@@ -375,7 +376,6 @@ class LogComparator:
         Horizontal bar chart.
 
         Shows each file's 4 key metrics side by side.
-        Good companion to the text ranking table — same data, visual form.
 
         What to look for
         ----------------
@@ -429,16 +429,6 @@ class LogComparator:
         plt.savefig(output_path, dpi=150, bbox_inches="tight")
         plt.close()
         print(f"[LogComparator] Bar chart saved to: {output_path}")
-
-# ---------------------------------------------------------------------------
-# Helper — safe asdict that works even if dataclasses.asdict is not imported
-# ---------------------------------------------------------------------------
-def asdict_safe(obj):
-    try:
-        from dataclasses import asdict
-        return asdict(obj)
-    except Exception:
-        return obj.__dict__
 
 if __name__ == "__main__":
     import sys
