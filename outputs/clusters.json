@@ -13,13 +13,6 @@
       "avg_similarity": 0.5571,
       "avg_churn": 0.4309,
       "avg_move": 0.006
-    },
-    "2": {
-      "count": 0,
-      "avg_distance": 0.0,
-      "avg_similarity": 0.0,
-      "avg_churn": 0.0,
-      "avg_move": 0.0
     }
   },
   "clusters": {

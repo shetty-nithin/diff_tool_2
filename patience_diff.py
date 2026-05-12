@@ -10,7 +10,7 @@ def patience_diff(file_a, file_b, output_file):
     is_html_output = True
 
     # =========================================================================
-    # SECTION 1 — LOAD FILES
+    # SECTION 1 — Load Files
     # =========================================================================
     # load_file reads a file line by line.
     # For every non-empty normalised line it stores:
@@ -37,7 +37,7 @@ def patience_diff(file_a, file_b, output_file):
     orig_b, norm_b = load_file(file_b)
 
     # =========================================================================
-    # SECTION 2 — SLICE DATA STRUCTURE
+    # SECTION 2 — Slice Data Structure
     # =========================================================================
     # A Slice describes a rectangular window into both files simultaneously.
     # a_low - a_high is the range of indices in File-A we are currently examining.
@@ -55,11 +55,9 @@ def patience_diff(file_a, file_b, output_file):
             return self.a_low < self.a_high and self.b_low < self.b_high
 
     # =========================================================================
-    # SECTION 3 — UNIQUE MATCHES
+    # SECTION 3 — Unique Matches
     # =========================================================================
-    # For the current slice, find every normalised line that appears EXACTLY
-    # ONCE in the A-side AND EXACTLY ONCE in the B-side.
-    #
+    # For the current slice, find every normalised line that appears EXACTLY ONCE in the A-side AND EXACTLY ONCE in the B-side.
     # The result is a list of (a_index, b_index) pairs sorted by a_index.
 
     def unique_matches(s):
@@ -89,16 +87,13 @@ def patience_diff(file_a, file_b, output_file):
         return sorted(matches)              # sort by a_index
 
     # =========================================================================
-    # SECTION 4 — LONGEST INCREASING SUBSEQUENCE (Patience Sorting)
+    # SECTION 4 — Longest Increasing Sequence (Patience Sorting)
     # =========================================================================
-    # Given the unique match pairs sorted by a_index, find the longest
-    # subsequence where b_index values are also strictly increasing.
+    # Given the unique match pairs sorted by a_index, finding the longest subsequence where b_index values are also strictly increasing.
     #
     # Reason:
-    #   A pair (a_i, b_j) can be a stable "unchanged" anchor only if there
-    #   exists an overall ordering where both files agree on the sequence.
-    #   The LIS on b_j values (when pairs are already sorted by a_i) gives
-    #   exactly the largest set of anchors that are consistent in both files.
+    #   A pair (a_i, b_j) can be a stable "unchanged" anchor only if there exists an overall ordering where both files agree on the sequence.
+    #   The LIS on b_j values (when pairs are already sorted by a_i) gives exactly the largest set of anchors that are consistent in both files.
     #
     # Algorithm: patience sort (O(n log n)).
 
@@ -130,7 +125,7 @@ def patience_diff(file_a, file_b, output_file):
         return list(reversed(result))   # back-trace gives reverse order
 
     # =========================================================================
-    # SECTION 5 — FALLBACK: SEQUENCEMATCHER
+    # SECTION 5 — Fallback: SequenceMatcher
     # =========================================================================
     # When a slice has no unique matching lines (all lines in the region appear more than once on at least one side), patience diff cannot place any anchor.  
     # We fall back to Python's built-in SequenceMatcher to diff the slice.
@@ -163,7 +158,7 @@ def patience_diff(file_a, file_b, output_file):
         return ops
 
     # =========================================================================
-    # SECTION 6 — RECURSIVE PATIENCE DIFF ENGINE
+    # SECTION 6 — Recursive Patience Diff Engine
     # =========================================================================
     # diff(s) processes the slice s and returns a flat list of ops.
     #
@@ -206,7 +201,7 @@ def patience_diff(file_a, file_b, output_file):
     ops = diff(Slice(0, len(norm_a), 0, len(norm_b)))
 
     # =========================================================================
-    # SECTION 7 — COLLECT INITIAL INSERTS / DELETES
+    # SECTION 7 — Collect Initial Inserts / Deletes
     # =========================================================================
     # Go through the ops list once, to separate out which A-indices were deleted and which B-indices were inserted.
     # These are the "remaining" lines that the Patience Diff could not place as stable anchors — they are candidates for move detection in the next section.
@@ -222,7 +217,7 @@ def patience_diff(file_a, file_b, output_file):
             deleted.append(op[1])
 
     # =========================================================================
-    # SECTION 8 — PATIENCE_DIFF_PLUS MOVE DETECTION
+    # SECTION 8 — Patience_Diff_Plus Move Detection
     # =========================================================================
     # Based on Jon Trent's PatienceDiffPlus (github.com/jonTrent/PatienceDiff).
     #
@@ -323,7 +318,7 @@ def patience_diff(file_a, file_b, output_file):
     move_map = {i: j for i, j in all_moves} # origin A-index → destination B-index
 
     # =========================================================================
-    # SECTION 9 — UPDATED DETECTION (optional, disabled by default)
+    # SECTION 9 — Update Detection(optional, disabled by default)
     # =========================================================================
     # If "is_updated_required" is True, this section will try to pair remaining deleted lines with remaining inserted lines that have similar content (ratio > 0.75).
     # These are shown as "updated" (red on left, green on right) rather than as separate delete + insert.
@@ -352,7 +347,7 @@ def patience_diff(file_a, file_b, output_file):
     update_map = {i: (j, sim) for i, j, sim in updated}
 
     # =========================================================================
-    # SECTION 10 — BUILD ops_html (FIRST PASS)
+    # SECTION 10 — Build ops_html (First Pass)
     # =========================================================================
     # Each tuple is (tag, left_content, right_content).
     #
@@ -412,19 +407,17 @@ def patience_diff(file_a, file_b, output_file):
             used_b.add(j)
 
     # =========================================================================
-    # SECTION 11 — TO HIGHLIGHT THE 'MOVED AREA' (SECOND PASS)
+    # SECTION 11 — To Highlight The 'Moved Area' (Second Pass)
     # =========================================================================
     # ops_html is now a flat list in display order.  For each move we have:
     #   MOVED_SRC at index src_pos  (old display position of the moved line)
     #   MOVED_DST at index dst_pos  (new display position of the moved line)
     #
-    # We paint every row in [min(src_pos, dst_pos) .. max(src_pos, dst_pos)]
-    # as MOVED (yellow background), regardless of its original tag.
+    # We paint every row in [min(src_pos, dst_pos) .. max(src_pos, dst_pos)] as MOVED (yellow background), regardless of its original tag.
     #
     # Step 1: build a dict   j_b → display_index   for every MOVED_DST row.
     # Step 2: for every MOVED_SRC, look up its dst_pos and paint the band.
-    # Step 3: normalise all remaining MOVED_SRC / MOVED_DST tags and strip
-    #         the j_b metadata so the renderer only ever sees 3-tuples.
+    # Step 3: normalise all remaining MOVED_SRC / MOVED_DST tags and strip the j_b metadata so the renderer only ever sees 3-tuples.
 
     # Step 1
     dst_pos_by_jb = {}
@@ -463,7 +456,7 @@ def patience_diff(file_a, file_b, output_file):
     }
 
     # =========================================================================
-    # SECTION 12 — TEXT OUTPUT (alternative to HTML)
+    # SECTION 12 — Text Output (Alternative to HTML)
     # =========================================================================
     def render_diff_to_text(ops_html, output_file):
         with open(output_file + ".txt", "w", encoding="utf-8") as f:
@@ -482,7 +475,7 @@ def patience_diff(file_a, file_b, output_file):
                     f.write(f"[UPDATED]: {a[0]} -> {b[0]}\n")
 
     # =========================================================================
-    # SECTION 13 — OUTPUT
+    # SECTION 13 — Output
     # =========================================================================
     if is_html_output:
         render_diff_to_html(
@@ -496,7 +489,7 @@ def patience_diff(file_a, file_b, output_file):
         render_diff_to_text(final_ops_html, output_file)
 
     # =========================================================================
-    # SECTION 14 — RANKING AND CLUSTERING
+    # SECTION 14 — Ranking And Clustering
     # =========================================================================
     from diff_vector import compute_diff_vector
     return compute_diff_vector(final_ops_html, orig_a, orig_b)

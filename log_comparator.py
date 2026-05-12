@@ -38,8 +38,8 @@ class LogComparator:
     def __init__(self, baseline: str, output_dir: str = "outputs/"):
         self.baseline   = baseline
         self.output_dir = output_dir
-        self.results    = {}   # { filename: DiffVector }
-        self.clusters   = {}   # { filename: cluster_label }
+        self.results    = {}   # { filename: DiffVector } => Populated by compare_all()
+        self.clusters   = {}   # { filename: cluster_label } => Populated by cluster()
 
         os.makedirs(output_dir, exist_ok=True)
 
@@ -164,12 +164,9 @@ class LogComparator:
 
         How it works
         ------------
-        1. Each file's DiffVector is converted to a plain list of 6 floats
-           via to_cluster_array().
-        2. The feature matrix is standardised (zero mean, unit variance) so
-           no single feature dominates just because of its scale.
-        3. KMeans finds n_clusters centroids and assigns each file to the
-           nearest one.
+        1. Each file's DiffVector is converted to a plain list of 6 floats via to_cluster_array().
+        2. The feature matrix is standardised (zero mean, unit variance) so no single feature dominates just because of its scale.
+        3. KMeans finds n_clusters centroids and assigns each file to the nearest one.
         4. Results are stored in self.clusters  { filename: label }.
         """
         _require_sklearn()
@@ -214,6 +211,7 @@ class LogComparator:
         for label in range(n_clusters):
             members = [f for f, l in self.clusters.items() if l == label]
             vecs    = [self.results[f] for f in members]
+
 
             self._cluster_stats[label] = {
                 "count":            len(members),
@@ -432,43 +430,9 @@ class LogComparator:
         plt.close()
         print(f"[LogComparator] Bar chart saved to: {output_path}")
 
-    # ===========================================================================
-    # Save / Load — persist results so we don't need to re-run the diff everytime
-    # ===========================================================================
-
-    def save_results(self, output_path: str):
-        """
-        Saves all DiffVectors to JSON so we can reload them later without re-running the full diff on every file.
-        """
-        from diff_vector import DiffVector
-        data = {
-            filename: asdict_safe(vec)
-            for filename, vec in self.results.items()
-        }
-        with open(output_path, "w", encoding="utf-8") as f:
-            json.dump(data, f, indent=2)
-        print(f"[LogComparator] Results saved to: {output_path}")
-
-    def load_results(self, input_path: str):
-        """
-        Loads previously saved DiffVectors from JSON. Lets us skip compare_all() and go straight to cluster().
-        """
-        from diff_vector import DiffVector
-        with open(input_path, "r", encoding="utf-8") as f:
-            data = json.load(f)
-
-        self.results = {}
-        for filename, fields in data.items():
-            v = DiffVector(**fields)
-            self.results[filename] = v
-
-        print(f"[LogComparator] Loaded {len(self.results)} results from: {input_path}")
-
-
 # ---------------------------------------------------------------------------
 # Helper — safe asdict that works even if dataclasses.asdict is not imported
 # ---------------------------------------------------------------------------
-
 def asdict_safe(obj):
     try:
         from dataclasses import asdict
@@ -476,19 +440,17 @@ def asdict_safe(obj):
     except Exception:
         return obj.__dict__
 
-
-
 if __name__ == "__main__":
     import sys
 
     if len(sys.argv) < 3:
         print("Usage: python log_comparator.py <baseline.log> <log_directory>")
-        print("Example: python log_comparator.py logs/kern-1.log logs/")
+        print("Example: python log_comparator.py inputs/kern-1.log inputs/")
         sys.exit(1)
 
     baseline  = sys.argv[1]
     log_dir   = sys.argv[2]
-    n_clusters = int(sys.argv[3]) if len(sys.argv) > 3 else 3
+    n_clusters = int(sys.argv[3]) if len(sys.argv) > 3 else 2
 
     cmp = LogComparator(baseline=baseline, output_dir="outputs/diff_with_baseline")
 
