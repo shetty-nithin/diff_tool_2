@@ -174,7 +174,7 @@ def patience_diff(file_a, file_b, output_file):
         matches = unique_matches(s)
 
         if not matches:
-            return fallback(s)          # no unique lines → use fallback
+            return fallback(s)      # no unique lines → use fallback
 
         anchors = longest_increasing_sequence(matches)
 

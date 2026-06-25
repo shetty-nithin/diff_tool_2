@@ -46,11 +46,9 @@ def compute_diff_vector(ops_html, orig_a, orig_b):
     v.insertion_ratio   = inserted / total_b              if total_b > 0 else 0.0
     v.churn_ratio       = (deleted + inserted) / total    if total   > 0 else 0.0
     v.move_ratio        = (moved * 2) / total             if total   > 0 else 0.0
-    v.overall_distance  = round(
-        0.40 * v.structural_change +
-        0.30 * v.churn_ratio       +
-        0.30 * v.move_ratio,
-        4
-    )
+
+    edit_cost          = deleted + inserted + (moved * 2)
+    ned                = edit_cost / (total_a + total_b + edit_cost) if (total_a + total_b + edit_cost) > 0 else 0.0 # Li & Bo (IEEE TPAMI 2007)
+    v.overall_distance = round(ned, 4)
 
     return v
