@@ -1,17 +1,24 @@
 {
-  "algorithm": "Agglomerative (k=2)",
+  "algorithm": "DBSCAN (eps=0.010, clusters=2)",
   "cluster_stats": {
     "0": {
-      "count": 5,
-      "avg_distance": 0.0024,
-      "avg_similarity": 0.9925,
-      "avg_churn": 0.0008,
-      "avg_move": 0.0016
+      "count": 9,
+      "avg_distance": 0.0022,
+      "avg_similarity": 0.9974,
+      "avg_churn": 0.0018,
+      "avg_move": 0.0004
     },
     "1": {
-      "count": 1,
+      "count": 2,
       "avg_distance": 0.0,
       "avg_similarity": 1.0,
+      "avg_churn": 0.0,
+      "avg_move": 0.0
+    },
+    "-1": {
+      "count": 1,
+      "avg_distance": 0.0,
+      "avg_similarity": 0.0,
       "avg_churn": 0.0,
       "avg_move": 0.0
     }
@@ -19,48 +26,92 @@
   "clusters": {
     "0": [
       {
-        "filename": "kern-1 copy 2.log",
-        "overall_distance": 0.0624,
-        "similarity_ratio": 0.9048,
-        "churn_ratio": 0.0869,
-        "move_ratio": 0.0026
-      },
-      {
-        "filename": "kern-1 copy 3.log",
-        "overall_distance": 0.0624,
-        "similarity_ratio": 0.9048,
-        "churn_ratio": 0.0869,
-        "move_ratio": 0.0026
-      },
-      {
-        "filename": "kern-1 copy 4.log",
-        "overall_distance": 0.0624,
-        "similarity_ratio": 0.9048,
-        "churn_ratio": 0.0869,
-        "move_ratio": 0.0026
-      },
-      {
-        "filename": "kern-1 copy.log",
-        "overall_distance": 0.0624,
-        "similarity_ratio": 0.9048,
-        "churn_ratio": 0.0869,
-        "move_ratio": 0.0026
-      },
-      {
         "filename": "kern-1.log",
-        "overall_distance": 0.0655,
-        "similarity_ratio": 0.8964,
-        "churn_ratio": 0.0878,
-        "move_ratio": 0.0044
+        "overall_distance": 0.0679,
+        "similarity_ratio": 0.9049,
+        "churn_ratio": 0.0925,
+        "move_ratio": 0.0013
+      },
+      {
+        "filename": "test1_identical.log",
+        "overall_distance": 0.0679,
+        "similarity_ratio": 0.9049,
+        "churn_ratio": 0.0925,
+        "move_ratio": 0.0013
+      },
+      {
+        "filename": "test2_minor_delete.log",
+        "overall_distance": 0.0681,
+        "similarity_ratio": 0.9048,
+        "churn_ratio": 0.093,
+        "move_ratio": 0.0011
+      },
+      {
+        "filename": "test3_minor_insert.log",
+        "overall_distance": 0.0683,
+        "similarity_ratio": 0.9045,
+        "churn_ratio": 0.0929,
+        "move_ratio": 0.0013
+      },
+      {
+        "filename": "test4_moved_line.log",
+        "overall_distance": 0.0691,
+        "similarity_ratio": 0.902,
+        "churn_ratio": 0.0923,
+        "move_ratio": 0.0028
+      },
+      {
+        "filename": "test5_duplicate_insert.log",
+        "overall_distance": 0.0684,
+        "similarity_ratio": 0.9045,
+        "churn_ratio": 0.093,
+        "move_ratio": 0.0013
+      },
+      {
+        "filename": "test6_duplicate_delete.log",
+        "overall_distance": 0.0688,
+        "similarity_ratio": 0.9036,
+        "churn_ratio": 0.0934,
+        "move_ratio": 0.0014
+      },
+      {
+        "filename": "test7_block_deleted.log",
+        "overall_distance": 0.0707,
+        "similarity_ratio": 0.9018,
+        "churn_ratio": 0.0957,
+        "move_ratio": 0.0013
+      },
+      {
+        "filename": "test8_block_insert_and_update.log",
+        "overall_distance": 0.0698,
+        "similarity_ratio": 0.9029,
+        "churn_ratio": 0.0946,
+        "move_ratio": 0.0013
       }
     ],
     "1": [
       {
         "filename": "kern-2.log",
-        "overall_distance": 0.3058,
-        "similarity_ratio": 0.5458,
-        "churn_ratio": 0.4321,
-        "move_ratio": 0.0084
+        "overall_distance": 0.2803,
+        "similarity_ratio": 0.5892,
+        "churn_ratio": 0.4001,
+        "move_ratio": 0.0054
+      },
+      {
+        "filename": "test10_different_baseline.log",
+        "overall_distance": 0.2803,
+        "similarity_ratio": 0.5892,
+        "churn_ratio": 0.4001,
+        "move_ratio": 0.0054
+      }
+    ],
+    "-1": [
+      {
+        "filename": "test9_heavy_drift.log",
+        "overall_distance": 0.1686,
+        "similarity_ratio": 0.7821,
+        "churn_ratio": 0.2158,
+        "move_ratio": 0.0012
       }
     ]
   }

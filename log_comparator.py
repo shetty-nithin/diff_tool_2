@@ -722,33 +722,3 @@ class LogComparator:
         plt.close()
         print(f"[LogComparator] Dendrogram saved to: {output_path}")
 
-
-# =========================================================================
-# Entry point
-# =========================================================================
-"""
-if __name__ == "__main__":
-    import sys
-
-    if len(sys.argv) < 2:
-        print("Usage: python log_comparator.py <log_directory>")
-        print("Example: python log_comparator.py inputs/")
-        sys.exit(1)
-
-    log_dir = sys.argv[1]
-    cmp     = LogComparator(output_dir="outputs/pairwise_diffs")
-
-    print("=" * 60)
-    print("Pairwise comparing all log files")
-    print("=" * 60)
-    cmp.compare_pairwise(log_dir)
-
-    print("\n" + "=" * 60)
-    print("Clustering — auto-selecting algorithm and k")
-    print("=" * 60)
-    cmp.cluster()
-    cmp.print_clusters()
-    cmp.save_clusters("outputs/clusters.json")
-    cmp.plot_scatter("outputs/graphs/scatter.png")
-    cmp.plot_dendrogram("outputs/graphs/dendrogram.png")
-"""
