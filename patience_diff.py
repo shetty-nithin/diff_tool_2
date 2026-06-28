@@ -224,7 +224,8 @@ def patience_diff(file_a, file_b, output_file):
     # The algorithm:
     #   Take the remaining deleted lines (from A) and remaining inserted lines (from B).
     #   Run the Patience Diff algorithm on just these lines.
-    #   Any line that matches in this second pass is a MOVED line — it existed in both files but at a different position relative to its stable neighbours.
+    #   Any line that is (a) unique within the current residual pool AND (b) survives the LIS filter is a MOVED line
+    #         — it existed in both files but at a different position relative to its stable neighbours.
     #   Repeat until no more matches are found.
 
     def patience_diff_plus(a_indices, b_indices):

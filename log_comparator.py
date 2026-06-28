@@ -351,10 +351,6 @@ class LogComparator:
           For each point, compute its distance to its k-th nearest neighbour.
           Sort these distances. The 'elbow' in the curve is a good eps value.
           Points with distances above eps are considered noise.
-
-        Reference: Ester et al. (1996). A density-based algorithm for
-          discovering clusters in large spatial databases with noise.
-          KDD-96, 226-231.
         """
         from sklearn.cluster import DBSCAN
         from sklearn.metrics import silhouette_score, davies_bouldin_score, calinski_harabasz_score
@@ -440,10 +436,7 @@ class LogComparator:
 
         for k in range(2, n):
             try:
-                gmm    = GaussianMixture(
-                    n_components=k, random_state=random_state,
-                    n_init=5, covariance_type="full"
-                )
+                gmm    = GaussianMixture(n_components=k, random_state=random_state, n_init=5, covariance_type="full")
                 gmm.fit(X_scaled)
                 bic = gmm.bic(X_scaled)
                 bic_scores[k] = round(bic, 2)
