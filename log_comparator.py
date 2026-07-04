@@ -236,6 +236,7 @@ class LogComparator:
         # =========================================================================
         # Consensus vote — rank each candidate on all three indices
         # =========================================================================
+
         names = list(candidates.keys())
 
         sil_scores = {name: candidates[name]["silhouette"] for name in names}
@@ -278,6 +279,10 @@ class LogComparator:
         self.algorithm_used = winner
         labels              = candidates[winner]["labels"]
         self.clusters       = {f: int(l) for f, l in zip(filenames, labels)}
+
+        print("D" *100)
+        print(labels)
+        print("D" *100)
 
         unique_labels = sorted(set(l for l in labels if l >= 0))
 

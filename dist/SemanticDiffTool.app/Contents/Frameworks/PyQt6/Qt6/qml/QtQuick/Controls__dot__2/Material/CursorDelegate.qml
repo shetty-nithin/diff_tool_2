@@ -1,0 +1,1 @@
+../../../../../../../Resources/PyQt6/Qt6/qml/QtQuick/Controls.2/Material/CursorDelegate.qml

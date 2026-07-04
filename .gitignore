@@ -1,0 +1,23 @@
+# PyInstaller build artifacts
+build/
+dist/
+*.spec
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Mac system files
+.DS_Store
+
+# Output files (generated at runtime, not source code)
+outputs/
+
+# Virtual environments
+venv/
+env/
+.env/
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
