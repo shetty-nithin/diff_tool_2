@@ -21,3 +21,13 @@ env/
 
 # Jupyter notebooks checkpoints
 .ipynb_checkpoints/
+
+# Test dataset log files — generated from kern-1/kern-2, not source
+test_datasets/group_a/*.log
+test_datasets/group_b/*.log
+test_datasets/group_c/*.log
+test_datasets/group_d/*.log
+test_datasets/group_e/*.log
+
+# Validation report — generated output
+test_datasets/validation_report.txt

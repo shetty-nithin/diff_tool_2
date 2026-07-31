@@ -1,0 +1,16 @@
+{
+  "_description": "Group C — Warning Conditions. Healthy boot with known warning lines injected. Files with similar warning types should cluster together and be DISTINCT from normal operation (Group A). Expected: 2-4 clusters, all labeled 'warning' not 'normal'.",
+  "expected_num_clusters": 4,
+  "files": {
+    "group_c-boot_01_warn.log": "warn_pebs_microcode",
+    "group_c-boot_02_warn.log": "warn_numa_missing",
+    "group_c-boot_03_warn.log": "warn_thermal",
+    "group_c-boot_04_warn.log": "warn_unknown_params",
+    "group_c-boot_05_warn.log": "warn_microcode_mismatch",
+    "group_c-boot_06_warn.log": "warn_ext4_unchecked",
+    "group_c-boot_07_warn.log": "warn_module_signature",
+    "group_c-boot_08_warn.log": "warn_pebs_thermal",
+    "group_c-boot_09_warn.log": "warn_softirq",
+    "group_c-boot_10_warn.log": "warn_memory_pressure"
+  }
+}

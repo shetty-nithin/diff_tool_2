@@ -1,0 +1,16 @@
+{
+  "_description": "Group A — Normal Operation. All files are healthy boots from the same hardware with only timestamp/reboot-cycle differences. Expected: ONE cluster containing all 10 files.",
+  "expected_num_clusters": 1,
+  "files": {
+    "group_a-boot_01.log": "normal",
+    "group_a-boot_02.log": "normal",
+    "group_a-boot_03.log": "normal",
+    "group_a-boot_04.log": "normal",
+    "group_a-boot_05.log": "normal",
+    "group_a-boot_06.log": "normal",
+    "group_a-boot_07.log": "normal",
+    "group_a-boot_08.log": "normal",
+    "group_a-boot_09.log": "normal",
+    "group_a-boot_10.log": "normal"
+  }
+}

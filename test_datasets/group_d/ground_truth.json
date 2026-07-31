@@ -1,0 +1,16 @@
+{
+  "_description": "Group D — Failure Conditions. Boot/operational failures with severity 1-3 (crit/alert/emerg) log lines. Expected: Clusters clearly SEPARATED from normal and warning groups. High overall_distance from normal baseline.",
+  "expected_num_clusters": 5,
+  "files": {
+    "group_d-boot_01_fail.log": "fail_driver_init",
+    "group_d-boot_02_fail.log": "fail_pci_enumeration",
+    "group_d-boot_03_fail.log": "fail_filesystem_corruption",
+    "group_d-boot_04_fail.log": "fail_network_interface",
+    "group_d-boot_05_fail.log": "fail_kernel_panic",
+    "group_d-boot_06_fail.log": "fail_memory_oom",
+    "group_d-boot_07_fail.log": "fail_usb_subsystem",
+    "group_d-boot_08_fail.log": "fail_disk_scsi",
+    "group_d-boot_09_fail.log": "fail_nfs_mount",
+    "group_d-boot_10_fail.log": "fail_mce_hardware"
+  }
+}

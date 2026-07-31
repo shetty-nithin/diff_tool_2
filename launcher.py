@@ -23,7 +23,7 @@ from PyQt6.QtWidgets import (
     QApplication, QWidget, QStackedWidget,
     QVBoxLayout, QHBoxLayout, QLabel, QPushButton,
     QFileDialog, QLineEdit, QFrame, QMessageBox,
-    QSizePolicy
+    QSizePolicy, QTextEdit
 )
 from PyQt6.QtCore import Qt, QThread, pyqtSignal, QObject, QTimer
 from PyQt6.QtGui import QFont, QFontDatabase, QColor, QPalette, QIcon
@@ -76,7 +76,7 @@ PYTHON = _find_python()
 # ══════════════════════════════════════════════════════════════════════════════
 
 class Worker(QObject):
-    finished = pyqtSignal(bool, str)   # success, output_dir
+    finished = pyqtSignal(bool, str, str)   # success, output_dir, stdout
 
     def __init__(self, cmd):
         super().__init__()
@@ -98,15 +98,15 @@ class Worker(QObject):
             out, _ = self._proc.communicate()
             ok = self._proc.returncode == 0
             if not ok:
-                # keep last 20 lines of output for the error dialog
                 lines = [l for l in (out or "").splitlines() if l.strip()]
                 self._error_detail = "\n".join(lines[-20:])
         except Exception as e:
             ok = False
+            out = ""
             self._error_detail = str(e)
 
         output_dir = os.path.join(ROOT, "outputs")
-        self.finished.emit(ok, output_dir)
+        self.finished.emit(ok, output_dir, out or "")
 
     def stop(self):
         if self._proc:
@@ -294,11 +294,14 @@ class MainWindow(QWidget):
         tabs = QHBoxLayout()
         tabs.setSpacing(6)
 
-        self.tab_diff    = QPushButton("⇄   Diff Two Files")
-        self.tab_cluster = QPushButton("◎   Cluster Directory")
+        self.tab_diff     = QPushButton("⇄   Diff Two Files")
+        self.tab_cluster  = QPushButton("◎   Cluster Directory")
+        self.tab_validate = QPushButton("✓   Validate")
 
-        for btn in (self.tab_diff, self.tab_cluster):
-            btn.setObjectName("tab_diff" if btn is self.tab_diff else "tab_cluster")
+        for btn in (self.tab_diff, self.tab_cluster, self.tab_validate):
+            btn.setObjectName(
+                "tab_diff" if btn is self.tab_diff else "tab_cluster"
+            )
             btn.setCheckable(True)
             btn.setCursor(Qt.CursorShape.PointingHandCursor)
             btn.setFixedHeight(40)
@@ -307,6 +310,7 @@ class MainWindow(QWidget):
         self.tab_diff.setChecked(True)
         self.tab_diff.clicked.connect(lambda: self._switch_mode("diff"))
         self.tab_cluster.clicked.connect(lambda: self._switch_mode("cluster"))
+        self.tab_validate.clicked.connect(self._validate)
 
         outer.addLayout(tabs)
 
@@ -499,7 +503,7 @@ class MainWindow(QWidget):
 
     # ── done ──────────────────────────────────────────────────────────────────
 
-    def _on_done(self, ok, output_dir):
+    def _on_done(self, ok, output_dir, stdout=""):
         # re-enable UI
         self.run_btn.setEnabled(True)
         self.run_btn.setText("▶   Run")
@@ -619,7 +623,45 @@ class MainWindow(QWidget):
         self._build_ui()
         self._switch_mode(self._mode)
 
+    # ── validate ──────────────────────────────────────────────────────────────
+
+    def _validate(self):
+        script = os.path.join(ROOT, "test_datasets", "validate_results.py")
+        if not os.path.isfile(script):
+            self._alert(
+                f"validate_results.py not found at:\n{script}\n\n"
+                "Make sure test_datasets/ is in your project root.",
+                error=True
+            )
+            return
+
+        self.tab_diff.setEnabled(False)
+        self.tab_cluster.setEnabled(False)
+        self.tab_validate.setEnabled(False)
+        self.tab_validate.setText("⏳  Running…")
+
+        self._worker = Worker([PYTHON, script])
+        self._thread = QThread()
+        self._worker.moveToThread(self._thread)
+        self._thread.started.connect(self._worker.run)
+        self._worker.finished.connect(self._on_validate_done)
+        self._worker.finished.connect(self._thread.quit)
+        self._thread.start()
+
+    def _on_validate_done(self, ok, output_dir, stdout):
+            self.tab_diff.setEnabled(True)
+            self.tab_cluster.setEnabled(True)
+            self.tab_validate.setEnabled(True)
+            self.tab_validate.setText("✓   Validate")
+            passed = "PASS ✅" in stdout
+            self._alert(
+                "Validation complete ✅\nFind the report in: test_datasets/validation_report.txt"
+                if passed else
+                "Validation done ❌\nFind the report in: test_datasets/validation_report.txt"
+            )
+
     # ── alert ─────────────────────────────────────────────────────────────────
+
 
     def _alert(self, message, error=False):
         box = QMessageBox(self)

@@ -20,6 +20,10 @@ import os
 import json
 import importlib.util
 
+import warnings
+from sklearn.exceptions import ConvergenceWarning
+warnings.filterwarnings("ignore", category=ConvergenceWarning)
+
 
 # =========================================================================
 # Dependency check
@@ -83,7 +87,7 @@ class LogComparator:
 
         n_pairs = len(log_files) * (len(log_files) - 1) // 2
         print(f"[LogComparator] Pairwise comparing {len(log_files)} files "
-              f"({n_pairs} pairs)\n")
+              f"({n_pairs} pairs)")
 
         self.results = {}
 
@@ -95,15 +99,15 @@ class LogComparator:
                 f"{file_a}_vs_{file_b}".replace(".log", "")
             )
 
-            print(f"  {file_a}  vs  {file_b} ...", end=" ", flush=True)
+            #print(f"  {file_a}  vs  {file_b} ...", end=" ", flush=True)
             try:
                 vec = patience_diff(path_a, path_b, output_stem)
                 self.results[(file_a, file_b)] = vec
-                print(f"done  (distance={vec.overall_distance:.4f})")
+                #print(f"done  (distance={vec.overall_distance:.4f})")
             except Exception as e:
                 print(f"ERROR: {e}")
 
-        print(f"\n[LogComparator] Done. {len(self.results)} pairs compared.")
+        print(f"[LogComparator] Done. {len(self.results)} pairs compared.")
 
     # =========================================================================
     # STEP 2 — Build NxN distance matrix
@@ -198,6 +202,18 @@ class LogComparator:
         D, filenames = self.build_distance_matrix()
         n = len(filenames)
 
+        # ── GLOBAL EARLY EXIT: all files identical ────────────────────────
+        import numpy as _np
+        if _np.max(D) < 1e-10:
+            print("[LogComparator] All pairwise distances = 0.0")
+            print("[LogComparator] All files are identical → 1 cluster, no algorithm needed.")
+            self.algorithm_used = "Trivial (all files identical — k=1)"
+            self.clusters       = {f: 0 for f in filenames}
+            labels_arr          = _np.zeros(n, dtype=int)
+            self._compute_cluster_stats(filenames, labels_arr, [0])
+            return
+        # ─────────────────────────────────────────────────────────────────
+
         if n < 3:
             print("[LogComparator] Need at least 3 files to cluster.")
             return
@@ -280,10 +296,6 @@ class LogComparator:
         labels              = candidates[winner]["labels"]
         self.clusters       = {f: int(l) for f, l in zip(filenames, labels)}
 
-        print("D" *100)
-        print(labels)
-        print("D" *100)
-
         unique_labels = sorted(set(l for l in labels if l >= 0))
 
         print(f"\n[LogComparator] Winner: {winner}")
@@ -307,6 +319,22 @@ class LogComparator:
         import numpy as np
 
         X_raw    = np.array([self._avg_vector(f)[:6] for f in filenames])
+
+        # ── EARLY EXIT: zero variance — all files are identical ──────────────
+        if np.var(D) < 1e-10 and np.max(D) < 1e-10:
+            print("[LogComparator] Agglomerative: all pairwise distances = 0.0 "
+                  "→ all files identical → trivial single cluster")
+            labels = np.zeros(n, dtype=int)   # everyone gets label 0
+            # Return as a valid candidate with perfect scores
+            return {
+                "Agglomerative (k=1 — all identical)": {
+                    "labels":            labels,
+                    "silhouette":        1.0,    # perfect cohesion
+                    "davies_bouldin":    0.0,    # perfect compactness(lower is better)
+                    "calinski_harabasz": 999.0,  # placeholder high value(higher is better)
+                }
+            }
+        # ─────────────────────────────────────────────────────────────────────
 
         best_k      = 2
         best_sil    = -1
@@ -364,6 +392,20 @@ class LogComparator:
 
         X_raw = np.array([self._avg_vector(f)[:6] for f in filenames])
 
+       # ── EARLY EXIT: all files are identical ───────────────────────────────
+        if np.max(D) < 1e-10:
+            print("[LogComparator] DBSCAN: all distances=0.0 → k=1 (all identical)")
+            labels = np.zeros(n, dtype=int)
+            return {
+                "DBSCAN (k=1, all-identical)": {
+                    "labels":            labels,
+                    "silhouette":        1.0,
+                    "davies_bouldin":    0.0,
+                    "calinski_harabasz": 999.0,
+                }
+            }
+        # ─────────────────────────────────────────────────────────────────
+
         # Auto-select eps using 4-NN distance elbow
         k_nn  = min(4, n - 1)
         nbrs  = NearestNeighbors(n_neighbors=k_nn, metric="precomputed").fit(D)
@@ -391,6 +433,22 @@ class LogComparator:
 
         print(f"[LogComparator] DBSCAN: eps={eps:.4f}  "
               f"clusters={n_clusters}  noise={n_noise}")
+
+        if n_clusters == 1 and n_noise == 0:
+            print("[LogComparator] DBSCAN: 1 cluster, no noise → all files similar (valid result)")
+            try:
+                db = davies_bouldin_score(X_raw, labels)
+                ch = calinski_harabasz_score(X_raw, labels)
+            except Exception:
+                db, ch = 0.0, 9999.0
+            return {
+                f"DBSCAN (eps={eps:.3f}, k=1)": {
+                    "labels":            labels,
+                    "silhouette":        0.9,
+                    "davies_bouldin":    round(float(db), 4),
+                    "calinski_harabasz": round(float(ch), 4),
+                }
+            }
 
         if n_clusters < 2:
             print("[LogComparator] DBSCAN: fewer than 2 clusters — skipping")
@@ -433,6 +491,20 @@ class LogComparator:
         from sklearn.metrics import silhouette_score, davies_bouldin_score, calinski_harabasz_score
         from sklearn.preprocessing import StandardScaler
         import numpy as np
+
+        # ── EARLY EXIT: zero/NaN variance in scaled features ──────────────
+        if np.isnan(X_scaled).any() or np.nanvar(X_scaled) < 1e-10:
+            print("[LogComparator] GMM: NaN/zero variance → k=1 (all identical)")
+            labels = np.zeros(n, dtype=int)
+            return {
+                "GMM (k=1, all-identical)": {
+                    "labels":            labels,
+                    "silhouette":        1.0,
+                    "davies_bouldin":    0.0,
+                    "calinski_harabasz": 999.0,
+                }
+            }
+        # ─────────────────────────────────────────────────────────────────
 
         best_bic    = float("inf")
         best_k      = 2
@@ -527,7 +599,7 @@ class LogComparator:
         for filename, label in self.clusters.items():
             groups.setdefault(label, []).append(filename)
 
-        print(f"\n[LogComparator] Algorithm used: {self.algorithm_used}\n")
+        print(f"[LogComparator] Algorithm used: {self.algorithm_used}")
 
         for label in sorted(groups.keys()):
             stats   = self._cluster_stats.get(label, {})
@@ -657,7 +729,7 @@ class LogComparator:
                                label=f"{name}  (avg dist={stats.get('avg_distance', 0):.3f})")
             )
 
-        ax.legend(handles=legend_patches, loc="upper right", fontsize=9, framealpha=0.9)
+        ax.legend(handles=legend_patches, loc="lower left", bbox_to_anchor=(1.02, 1),borderaxespad=0, fontsize=9, framealpha=0.9)
         ax.set_xlabel(f"PC1  ({var[0]*100:.1f}% variance)", fontsize=10)
         ax.set_ylabel(f"PC2  ({var[1]*100:.1f}% variance)", fontsize=10)
         ax.set_title(
