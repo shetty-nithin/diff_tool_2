@@ -569,10 +569,10 @@ class LogComparator:
 
             self._cluster_stats[label] = {
                 "count":          len(members),
-                "avg_distance":   round(sum(p.overall_distance for p in pairs) / len(pairs), 4) if pairs else 0.0,
-                "avg_similarity": round(sum(p.similarity_ratio  for p in pairs) / len(pairs), 4) if pairs else 1.0,
-                "avg_churn":      round(sum(p.churn_ratio        for p in pairs) / len(pairs), 4) if pairs else 0.0,
-                "avg_move":       round(sum(p.move_ratio         for p in pairs) / len(pairs), 4) if pairs else 0.0,
+                "avg_distance":   sum(self._avg_vector(fname)[6] for fname in members) / len(members) if members else 0.0,
+                "avg_similarity": round(sum(p.similarity_ratio  for p in pairs) / len(pairs), 8) if pairs else 1.0,
+                "avg_churn":      round(sum(p.churn_ratio        for p in pairs) / len(pairs), 8) if pairs else 0.0,
+                "avg_move":       round(sum(p.move_ratio         for p in pairs) / len(pairs), 8) if pairs else 0.0,
             }
 
         # Outliers from DBSCAN get their own entry
@@ -726,12 +726,12 @@ class LogComparator:
             stats = self._cluster_stats.get(lbl, {})
             legend_patches.append(
                 mpatches.Patch(color=color,
-                               label=f"{name}  (avg dist={stats.get('avg_distance', 0):.3f})")
+                               label=f"{name}  (avg dist={stats.get('avg_distance', 0):.4f})")
             )
 
         ax.legend(handles=legend_patches, loc="lower left", bbox_to_anchor=(1.02, 1),borderaxespad=0, fontsize=9, framealpha=0.9)
-        ax.set_xlabel(f"PC1  ({var[0]*100:.1f}% variance)", fontsize=10)
-        ax.set_ylabel(f"PC2  ({var[1]*100:.1f}% variance)", fontsize=10)
+        ax.set_xlabel(f"PC1  ({var[0]*100:.15g}% variance)", fontsize=10)
+        ax.set_ylabel(f"PC2  ({var[1]*100:.15g}% variance)", fontsize=10)
         ax.set_title(
             f"Log File Clustering — {self.algorithm_used}\n"
             f"{len(filenames)} files  |  "

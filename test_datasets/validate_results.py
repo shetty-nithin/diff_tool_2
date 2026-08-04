@@ -33,7 +33,10 @@ def load_json(path, label):
         return json.load(f)
 
 def is_anomaly(label):
-    """Normal = 'normal' or 'cfg_*'.  Anomaly = warn_*, fail_*, contaminated."""
+    """
+        Normal  = normal, cfg_*
+        Anomaly = warn_*, fail_*, contaminated
+    """
     return any(label.startswith(p) for p in ("warn_", "fail_", "contaminated"))
 
 # ─────────────────────────────────────────────────────────────────────────────

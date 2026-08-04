@@ -1,392 +1,200 @@
 {
-  "algorithm": "GMM (k=4)",
+  "algorithm": "Agglomerative (k=6)",
   "cluster_stats": {
     "0": {
-      "count": 30,
-      "avg_distance": 0.0017,
-      "avg_similarity": 0.9983,
-      "avg_churn": 0.0017,
+      "count": 2,
+      "avg_distance": 0.002,
+      "avg_similarity": 1.0,
+      "avg_churn": 0.0,
       "avg_move": 0.0
     },
     "1": {
-      "count": 3,
-      "avg_distance": 0.0053,
-      "avg_similarity": 0.9947,
-      "avg_churn": 0.0053,
+      "count": 2,
+      "avg_distance": 0.002,
+      "avg_similarity": 1.0,
+      "avg_churn": 0.0,
       "avg_move": 0.0
     },
     "2": {
-      "count": 10,
-      "avg_distance": 0.0046,
-      "avg_similarity": 0.9954,
-      "avg_churn": 0.0046,
+      "count": 2,
+      "avg_distance": 0.0017894736842105265,
+      "avg_similarity": 1.0,
+      "avg_churn": 0.0,
       "avg_move": 0.0
     },
     "3": {
-      "count": 7,
-      "avg_distance": 0.0052,
-      "avg_similarity": 0.9947,
-      "avg_churn": 0.0053,
+      "count": 2,
+      "avg_distance": 0.002,
+      "avg_similarity": 1.0,
+      "avg_churn": 0.0,
+      "avg_move": 0.0
+    },
+    "4": {
+      "count": 2,
+      "avg_distance": 0.002,
+      "avg_similarity": 1.0,
+      "avg_churn": 0.0,
+      "avg_move": 0.0
+    },
+    "5": {
+      "count": 10,
+      "avg_distance": 0.0009473684210526316,
+      "avg_similarity": 1.0,
+      "avg_churn": 0.0,
       "avg_move": 0.0
     }
   },
   "clusters": {
-    "0": [
+    "5": [
       {
         "filename": "group_a-boot_01.log",
-        "overall_distance": 0.0506,
-        "similarity_ratio": 0.9379,
-        "churn_ratio": 0.0612,
-        "move_ratio": 0.0005
+        "overall_distance": 0.0009,
+        "similarity_ratio": 0.9991,
+        "churn_ratio": 0.0009,
+        "move_ratio": 0.0
       },
       {
         "filename": "group_a-boot_02.log",
-        "overall_distance": 0.0506,
-        "similarity_ratio": 0.9379,
-        "churn_ratio": 0.0612,
-        "move_ratio": 0.0005
+        "overall_distance": 0.0009,
+        "similarity_ratio": 0.9991,
+        "churn_ratio": 0.0009,
+        "move_ratio": 0.0
       },
       {
         "filename": "group_a-boot_03.log",
-        "overall_distance": 0.0506,
-        "similarity_ratio": 0.9379,
-        "churn_ratio": 0.0612,
-        "move_ratio": 0.0005
+        "overall_distance": 0.0009,
+        "similarity_ratio": 0.9991,
+        "churn_ratio": 0.0009,
+        "move_ratio": 0.0
       },
       {
         "filename": "group_a-boot_04.log",
-        "overall_distance": 0.0506,
-        "similarity_ratio": 0.9379,
-        "churn_ratio": 0.0612,
-        "move_ratio": 0.0005
+        "overall_distance": 0.0009,
+        "similarity_ratio": 0.9991,
+        "churn_ratio": 0.0009,
+        "move_ratio": 0.0
       },
       {
         "filename": "group_a-boot_05.log",
-        "overall_distance": 0.0506,
-        "similarity_ratio": 0.9379,
-        "churn_ratio": 0.0612,
-        "move_ratio": 0.0005
+        "overall_distance": 0.0009,
+        "similarity_ratio": 0.9991,
+        "churn_ratio": 0.0009,
+        "move_ratio": 0.0
       },
       {
         "filename": "group_a-boot_06.log",
-        "overall_distance": 0.0506,
-        "similarity_ratio": 0.9379,
-        "churn_ratio": 0.0612,
-        "move_ratio": 0.0005
+        "overall_distance": 0.0009,
+        "similarity_ratio": 0.9991,
+        "churn_ratio": 0.0009,
+        "move_ratio": 0.0
       },
       {
         "filename": "group_a-boot_07.log",
-        "overall_distance": 0.0506,
-        "similarity_ratio": 0.9379,
-        "churn_ratio": 0.0612,
-        "move_ratio": 0.0005
+        "overall_distance": 0.0009,
+        "similarity_ratio": 0.9991,
+        "churn_ratio": 0.0009,
+        "move_ratio": 0.0
       },
       {
         "filename": "group_a-boot_08.log",
-        "overall_distance": 0.0506,
-        "similarity_ratio": 0.9379,
-        "churn_ratio": 0.0612,
-        "move_ratio": 0.0005
+        "overall_distance": 0.0009,
+        "similarity_ratio": 0.9991,
+        "churn_ratio": 0.0009,
+        "move_ratio": 0.0
       },
       {
         "filename": "group_a-boot_09.log",
-        "overall_distance": 0.0506,
-        "similarity_ratio": 0.9379,
-        "churn_ratio": 0.0612,
-        "move_ratio": 0.0005
+        "overall_distance": 0.0009,
+        "similarity_ratio": 0.9991,
+        "churn_ratio": 0.0009,
+        "move_ratio": 0.0
       },
       {
         "filename": "group_a-boot_10.log",
-        "overall_distance": 0.0506,
-        "similarity_ratio": 0.9379,
-        "churn_ratio": 0.0612,
-        "move_ratio": 0.0005
-      },
+        "overall_distance": 0.0009,
+        "similarity_ratio": 0.9991,
+        "churn_ratio": 0.0009,
+        "move_ratio": 0.0
+      }
+    ],
+    "4": [
       {
         "filename": "group_b-boot_01_cfg_ipv6_enabled.log",
-        "overall_distance": 0.052,
-        "similarity_ratio": 0.9363,
-        "churn_ratio": 0.0627,
-        "move_ratio": 0.0005
+        "overall_distance": 0.002,
+        "similarity_ratio": 0.998,
+        "churn_ratio": 0.002,
+        "move_ratio": 0.0
       },
       {
         "filename": "group_b-boot_02_cfg_ipv6_enabled.log",
-        "overall_distance": 0.052,
-        "similarity_ratio": 0.9363,
-        "churn_ratio": 0.0627,
-        "move_ratio": 0.0005
-      },
-      {
-        "filename": "group_b-boot_03_cfg_console_tty8.log",
-        "overall_distance": 0.052,
-        "similarity_ratio": 0.9363,
-        "churn_ratio": 0.0627,
-        "move_ratio": 0.0005
-      },
-      {
-        "filename": "group_b-boot_04_cfg_console_tty8.log",
-        "overall_distance": 0.052,
-        "similarity_ratio": 0.9363,
-        "churn_ratio": 0.0627,
-        "move_ratio": 0.0005
-      },
-      {
-        "filename": "group_b-boot_05_cfg_audit_enabled.log",
-        "overall_distance": 0.0515,
-        "similarity_ratio": 0.9369,
-        "churn_ratio": 0.0621,
-        "move_ratio": 0.0005
-      },
-      {
-        "filename": "group_b-boot_06_cfg_audit_enabled.log",
-        "overall_distance": 0.0515,
-        "similarity_ratio": 0.9369,
-        "churn_ratio": 0.0621,
-        "move_ratio": 0.0005
-      },
-      {
-        "filename": "group_b-boot_07_cfg_isolcpu_off.log",
-        "overall_distance": 0.052,
-        "similarity_ratio": 0.9363,
-        "churn_ratio": 0.0627,
-        "move_ratio": 0.0005
-      },
-      {
-        "filename": "group_b-boot_08_cfg_isolcpu_off.log",
-        "overall_distance": 0.052,
-        "similarity_ratio": 0.9363,
-        "churn_ratio": 0.0627,
-        "move_ratio": 0.0005
-      },
-      {
-        "filename": "group_b-boot_09_cfg_ipv6_console.log",
-        "overall_distance": 0.052,
-        "similarity_ratio": 0.9363,
-        "churn_ratio": 0.0627,
-        "move_ratio": 0.0005
-      },
-      {
-        "filename": "group_b-boot_10_cfg_ipv6_console.log",
-        "overall_distance": 0.052,
-        "similarity_ratio": 0.9363,
-        "churn_ratio": 0.0627,
-        "move_ratio": 0.0005
-      },
-      {
-        "filename": "group_c-boot_01_warn.log",
-        "overall_distance": 0.0514,
-        "similarity_ratio": 0.9369,
-        "churn_ratio": 0.0621,
-        "move_ratio": 0.0005
-      },
-      {
-        "filename": "group_c-boot_02_warn.log",
-        "overall_distance": 0.0514,
-        "similarity_ratio": 0.9369,
-        "churn_ratio": 0.0621,
-        "move_ratio": 0.0005
-      },
-      {
-        "filename": "group_c-boot_03_warn.log",
-        "overall_distance": 0.0519,
-        "similarity_ratio": 0.9365,
-        "churn_ratio": 0.0626,
-        "move_ratio": 0.0005
-      },
-      {
-        "filename": "group_c-boot_04_warn.log",
-        "overall_distance": 0.0514,
-        "similarity_ratio": 0.9369,
-        "churn_ratio": 0.0621,
-        "move_ratio": 0.0005
-      },
-      {
-        "filename": "group_c-boot_05_warn.log",
-        "overall_distance": 0.0514,
-        "similarity_ratio": 0.9369,
-        "churn_ratio": 0.0621,
-        "move_ratio": 0.0005
-      },
-      {
-        "filename": "group_c-boot_06_warn.log",
-        "overall_distance": 0.0514,
-        "similarity_ratio": 0.9369,
-        "churn_ratio": 0.0621,
-        "move_ratio": 0.0005
-      },
-      {
-        "filename": "group_c-boot_07_warn.log",
-        "overall_distance": 0.0514,
-        "similarity_ratio": 0.9369,
-        "churn_ratio": 0.0621,
-        "move_ratio": 0.0005
-      },
-      {
-        "filename": "group_c-boot_08_warn.log",
-        "overall_distance": 0.0514,
-        "similarity_ratio": 0.9369,
-        "churn_ratio": 0.0621,
-        "move_ratio": 0.0005
-      },
-      {
-        "filename": "group_c-boot_09_warn.log",
-        "overall_distance": 0.0514,
-        "similarity_ratio": 0.9369,
-        "churn_ratio": 0.0621,
-        "move_ratio": 0.0005
-      },
-      {
-        "filename": "group_c-boot_10_warn.log",
-        "overall_distance": 0.0514,
-        "similarity_ratio": 0.9369,
-        "churn_ratio": 0.0621,
-        "move_ratio": 0.0005
-      }
-    ],
-    "2": [
-      {
-        "filename": "group_d-boot_01_fail.log",
-        "overall_distance": 0.1479,
-        "similarity_ratio": 0.8196,
-        "churn_ratio": 0.1801,
-        "move_ratio": 0.0001
-      },
-      {
-        "filename": "group_d-boot_02_fail.log",
-        "overall_distance": 0.1479,
-        "similarity_ratio": 0.8196,
-        "churn_ratio": 0.1801,
-        "move_ratio": 0.0001
-      },
-      {
-        "filename": "group_d-boot_03_fail.log",
-        "overall_distance": 0.1479,
-        "similarity_ratio": 0.8196,
-        "churn_ratio": 0.1801,
-        "move_ratio": 0.0001
-      },
-      {
-        "filename": "group_d-boot_04_fail.log",
-        "overall_distance": 0.1479,
-        "similarity_ratio": 0.8196,
-        "churn_ratio": 0.1801,
-        "move_ratio": 0.0001
-      },
-      {
-        "filename": "group_d-boot_05_fail.log",
-        "overall_distance": 0.1479,
-        "similarity_ratio": 0.8196,
-        "churn_ratio": 0.1801,
-        "move_ratio": 0.0001
-      },
-      {
-        "filename": "group_d-boot_06_fail.log",
-        "overall_distance": 0.1479,
-        "similarity_ratio": 0.8196,
-        "churn_ratio": 0.1801,
-        "move_ratio": 0.0001
-      },
-      {
-        "filename": "group_d-boot_07_fail.log",
-        "overall_distance": 0.1479,
-        "similarity_ratio": 0.8196,
-        "churn_ratio": 0.1801,
-        "move_ratio": 0.0001
-      },
-      {
-        "filename": "group_d-boot_08_fail.log",
-        "overall_distance": 0.1479,
-        "similarity_ratio": 0.8196,
-        "churn_ratio": 0.1801,
-        "move_ratio": 0.0001
-      },
-      {
-        "filename": "group_d-boot_09_fail.log",
-        "overall_distance": 0.1479,
-        "similarity_ratio": 0.8196,
-        "churn_ratio": 0.1801,
-        "move_ratio": 0.0001
-      },
-      {
-        "filename": "group_d-boot_10_fail.log",
-        "overall_distance": 0.1479,
-        "similarity_ratio": 0.8196,
-        "churn_ratio": 0.1801,
-        "move_ratio": 0.0001
+        "overall_distance": 0.002,
+        "similarity_ratio": 0.998,
+        "churn_ratio": 0.002,
+        "move_ratio": 0.0
       }
     ],
     "3": [
       {
-        "filename": "group_e-boot_01_contaminated.log",
-        "overall_distance": 0.0544,
-        "similarity_ratio": 0.9342,
-        "churn_ratio": 0.0648,
-        "move_ratio": 0.0005
+        "filename": "group_b-boot_03_cfg_console_tty8.log",
+        "overall_distance": 0.002,
+        "similarity_ratio": 0.998,
+        "churn_ratio": 0.002,
+        "move_ratio": 0.0
       },
       {
-        "filename": "group_e-boot_02_contaminated.log",
-        "overall_distance": 0.0544,
-        "similarity_ratio": 0.9342,
-        "churn_ratio": 0.0648,
-        "move_ratio": 0.0005
+        "filename": "group_b-boot_04_cfg_console_tty8.log",
+        "overall_distance": 0.002,
+        "similarity_ratio": 0.998,
+        "churn_ratio": 0.002,
+        "move_ratio": 0.0
+      }
+    ],
+    "2": [
+      {
+        "filename": "group_b-boot_05_cfg_audit_enabled.log",
+        "overall_distance": 0.0018,
+        "similarity_ratio": 0.9982,
+        "churn_ratio": 0.0018,
+        "move_ratio": 0.0
       },
       {
-        "filename": "group_e-boot_03_contaminated.log",
-        "overall_distance": 0.0548,
-        "similarity_ratio": 0.9338,
-        "churn_ratio": 0.0653,
-        "move_ratio": 0.0005
-      },
-      {
-        "filename": "group_e-boot_04_contaminated.log",
-        "overall_distance": 0.0544,
-        "similarity_ratio": 0.9342,
-        "churn_ratio": 0.0648,
-        "move_ratio": 0.0005
-      },
-      {
-        "filename": "group_e-boot_05_contaminated.log",
-        "overall_distance": 0.0544,
-        "similarity_ratio": 0.9342,
-        "churn_ratio": 0.0648,
-        "move_ratio": 0.0005
-      },
-      {
-        "filename": "group_e-boot_06_contaminated.log",
-        "overall_distance": 0.0548,
-        "similarity_ratio": 0.9338,
-        "churn_ratio": 0.0653,
-        "move_ratio": 0.0005
-      },
-      {
-        "filename": "group_e-boot_07_contaminated.log",
-        "overall_distance": 0.0544,
-        "similarity_ratio": 0.9342,
-        "churn_ratio": 0.0648,
-        "move_ratio": 0.0005
+        "filename": "group_b-boot_06_cfg_audit_enabled.log",
+        "overall_distance": 0.0018,
+        "similarity_ratio": 0.9982,
+        "churn_ratio": 0.0018,
+        "move_ratio": 0.0
       }
     ],
     "1": [
       {
-        "filename": "group_e-boot_08_contaminated.log",
-        "overall_distance": 0.1902,
-        "similarity_ratio": 0.7564,
-        "churn_ratio": 0.2306,
-        "move_ratio": 0.0065
+        "filename": "group_b-boot_07_cfg_isolcpu_off.log",
+        "overall_distance": 0.002,
+        "similarity_ratio": 0.998,
+        "churn_ratio": 0.002,
+        "move_ratio": 0.0
       },
       {
-        "filename": "group_e-boot_09_contaminated.log",
-        "overall_distance": 0.1902,
-        "similarity_ratio": 0.7564,
-        "churn_ratio": 0.2306,
-        "move_ratio": 0.0065
+        "filename": "group_b-boot_08_cfg_isolcpu_off.log",
+        "overall_distance": 0.002,
+        "similarity_ratio": 0.998,
+        "churn_ratio": 0.002,
+        "move_ratio": 0.0
+      }
+    ],
+    "0": [
+      {
+        "filename": "group_b-boot_09_cfg_ipv6_console.log",
+        "overall_distance": 0.002,
+        "similarity_ratio": 0.998,
+        "churn_ratio": 0.002,
+        "move_ratio": 0.0
       },
       {
-        "filename": "group_e-boot_10_contaminated.log",
-        "overall_distance": 0.1904,
-        "similarity_ratio": 0.756,
-        "churn_ratio": 0.231,
-        "move_ratio": 0.0065
+        "filename": "group_b-boot_10_cfg_ipv6_console.log",
+        "overall_distance": 0.002,
+        "similarity_ratio": 0.998,
+        "churn_ratio": 0.002,
+        "move_ratio": 0.0
       }
     ]
   }
