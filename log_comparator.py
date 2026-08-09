@@ -19,6 +19,7 @@ The best algorithm and k are selected by consensus across all three metrics.
 import os
 import json
 import importlib.util
+import re
 
 import warnings
 from sklearn.exceptions import ConvergenceWarning
@@ -423,7 +424,7 @@ class LogComparator:
             eps = np.median(kth_dist)
 
         # Clamp eps to a reasonable range
-        eps = float(np.clip(eps, 0.01, 0.99))
+        eps = float(np.clip(eps, 0.001, 0.99))
 
         model  = DBSCAN(eps=eps, min_samples=2, metric="precomputed")
         labels = model.fit_predict(D)

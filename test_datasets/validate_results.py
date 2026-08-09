@@ -308,14 +308,9 @@ def validate_expected_behavior(group_name, gt_files, rows, cluster_labels):
     # GROUP B
     elif group_name == "group_b":
 
-        result["expected_behavior"] = (
-            "Configuration variations may form separate "
-            "sub-clusters but must remain non-anomalous."
-        )
+        result["expected_behavior"] = ("Configuration variations may form separate sub-clusters but must remain non-anomalous.")
 
-        # Find whether any cfg_* file was assigned to an
-        # anomaly cluster.
-
+        # Find whether any cfg_* file was assigned to an anomaly cluster.
         anomaly_clusters = set()
 
         for cluster_id, labels in cluster_labels.items():
@@ -335,23 +330,18 @@ def validate_expected_behavior(group_name, gt_files, rows, cluster_labels):
     # GROUP C
     elif group_name == "group_c":
 
-        result["expected_behavior"] = (
-            "Warning logs should be distinguishable "
-            "from normal operation."
-        )
+        result["expected_behavior"] = ("Warning logs should be distinguishable from normal operation.")
 
         normal_clusters = {
             cluster
             for _, gt, cluster in rows
-            if gt == "normal"
-            and cluster != "NOT FOUND"
+            if gt == "normal" and cluster != "NOT FOUND"
         }
 
         warning_clusters = {
             cluster
             for _, gt, cluster in rows
-            if gt.startswith("warn_")
-            and cluster != "NOT FOUND"
+            if gt.startswith("warn") and cluster != "NOT FOUND"
         }
 
         result["behavior_pass"] = bool(warning_clusters - normal_clusters)
@@ -568,19 +558,13 @@ def validate(group_folder, clusters_json_path):
     )
 
     print("\nExpected behavior:")
-    print(
-        f"  {behavior['expected_behavior']}"
-    )
-
+    print(f"  {behavior['expected_behavior']}")
     print(
         f"  Result: "
         f"{'PASS' if behavior['behavior_pass'] else 'FAIL'}"
     )
 
-    # ------------------------------------------------------------------------
     # Final verdict
-    # ------------------------------------------------------------------------
-
     purity_pass = (purity >= PURITY_THRESHOLD)
 
     behavior_pass = behavior["behavior_pass"]

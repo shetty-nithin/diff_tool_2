@@ -1,6 +1,6 @@
 {
   "_description": "Group B — Configuration Variations. Same healthy hardware, different boot params. Files with the same config label should cluster together. Expected: 4-5 sub-clusters, all near normal range (not anomalous).",
-  "expected_num_clusters": 5,
+  "expected_num_clusters": 6,
   "files": {
     "group_b-boot_01_cfg_ipv6_enabled.log": "cfg_ipv6_enabled",
     "group_b-boot_02_cfg_ipv6_enabled.log": "cfg_ipv6_enabled",
@@ -11,6 +11,16 @@
     "group_b-boot_07_cfg_isolcpu_off.log":   "cfg_isolcpu_off",
     "group_b-boot_08_cfg_isolcpu_off.log":   "cfg_isolcpu_off",
     "group_b-boot_09_cfg_ipv6_console.log":  "cfg_ipv6_and_console",
-    "group_b-boot_10_cfg_ipv6_console.log":  "cfg_ipv6_and_console"
+    "group_b-boot_10_cfg_ipv6_console.log":  "cfg_ipv6_and_console",
+    "group_a-boot_01.log": "normal",
+    "group_a-boot_02.log": "normal",
+    "group_a-boot_03.log": "normal",
+    "group_a-boot_04.log": "normal",
+    "group_a-boot_05.log": "normal",
+    "group_a-boot_06.log": "normal",
+    "group_a-boot_07.log": "normal",
+    "group_a-boot_08.log": "normal",
+    "group_a-boot_09.log": "normal",
+    "group_a-boot_10.log": "normal"
   }
 }
