@@ -1,0 +1,24 @@
+=====================================================================================
+VALIDATION RESULT: group_c
+=====================================================================================
+Dataset folder       : /Users/nithinshetty/aiml/projects/diff_tool/test_datasets/group_c
+Algorithm            : DBSCAN (eps=0.010, k=1)
+Expected clusters    : 2
+Found clusters       : 1
+Purity               : 0.5
+Silhouette           : None
+TP                   : 0
+FP                   : 0
+FN                   : 10
+TN                   : 10
+Precision            : 0.0
+Recall               : 0.0
+F1                   : 0.0
+Behavior pass        : False
+Purity pass          : False
+Verdict              : FAIL
+Cluster distances    : {}
+
+=====================================================================================
+VALIDATION COMPLETED SUCCESSFULLY
+=====================================================================================

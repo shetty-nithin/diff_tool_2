@@ -1,0 +1,6 @@
+================================================================================
+VALIDATION FAILED
+================================================================================
+Dataset folder : /Users/nithinshetty/aiml/projects/diff_tool/inputs/test
+Error          : [ERROR] ground_truth.json not found at: /Users/nithinshetty/aiml/projects/diff_tool/inputs/test/ground_truth.json
+

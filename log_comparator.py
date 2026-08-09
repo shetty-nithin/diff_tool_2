@@ -643,6 +643,12 @@ class LogComparator:
             "algorithm":     self.algorithm_used,
             "cluster_stats": {str(k): v for k, v in self._cluster_stats.items()},
             "clusters":      groups,
+            "filenames": self._filenames,
+            "distance_matrix": (
+                    self._D.tolist()
+                    if self._D is not None
+                    else []
+                )
         }
 
         with open(output_path, "w", encoding="utf-8") as f:
