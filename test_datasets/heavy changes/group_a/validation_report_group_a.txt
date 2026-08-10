@@ -1,0 +1,24 @@
+=====================================================================================
+VALIDATION RESULT: group_a
+=====================================================================================
+Dataset folder       : /Users/nithinshetty/aiml/projects/diff_tool/test_datasets/group_a
+Algorithm            : DBSCAN (eps=0.500, k=1)
+Expected clusters    : 1
+Found clusters       : 1
+Purity               : 1.0
+Silhouette           : None
+TP                   : 0
+FP                   : 0
+FN                   : 0
+TN                   : 10
+Precision            : 0.0
+Recall               : 0.0
+F1                   : 0.0
+Behavior pass        : True
+Purity pass          : True
+Verdict              : PASS
+Cluster distances    : {}
+
+=====================================================================================
+VALIDATION COMPLETED SUCCESSFULLY
+=====================================================================================

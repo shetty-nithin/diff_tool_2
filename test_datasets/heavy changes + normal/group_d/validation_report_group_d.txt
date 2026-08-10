@@ -1,0 +1,24 @@
+=====================================================================================
+VALIDATION RESULT: group_d
+=====================================================================================
+Dataset folder       : /Users/nithinshetty/aiml/projects/diff_tool/test_datasets/group_d
+Algorithm            : Agglomerative (k=3)
+Expected clusters    : 3
+Found clusters       : 3
+Purity               : 1.0
+Silhouette           : 0.5027054108216432
+TP                   : 0
+FP                   : 0
+FN                   : 0
+TN                   : 20
+Precision            : 0.0
+Recall               : 0.0
+F1                   : 0.0
+Behavior pass        : True
+Purity pass          : True
+Verdict              : PASS
+Cluster distances    : {'0<->1': 0.5, '0<->2': 0.499, '1<->2': 0.5}
+
+=====================================================================================
+VALIDATION COMPLETED SUCCESSFULLY
+=====================================================================================

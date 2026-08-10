@@ -1,0 +1,16 @@
+{
+  "_description": "Failure conditions. Five less-failure and five heavy-failure logs.",
+  "expected_num_clusters": 2,
+  "files": {
+    "group_d_01_failure_less.log": "failure_less",
+    "group_d_02_failure_less.log": "failure_less",
+    "group_d_03_failure_less.log": "failure_less",
+    "group_d_04_failure_less.log": "failure_less",
+    "group_d_05_failure_less.log": "failure_less",
+    "group_d_06_failure_heavy.log": "failure_heavy",
+    "group_d_07_failure_heavy.log": "failure_heavy",
+    "group_d_08_failure_heavy.log": "failure_heavy",
+    "group_d_09_failure_heavy.log": "failure_heavy",
+    "group_d_10_failure_heavy.log": "failure_heavy"
+  }
+}

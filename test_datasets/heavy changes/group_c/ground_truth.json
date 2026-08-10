@@ -1,0 +1,16 @@
+{
+  "_description": "Partially degraded systems. Five less-warning and five heavy-warning logs.",
+  "expected_num_clusters": 2,
+  "files": {
+    "group_c_01_warning_less.log": "warning_less",
+    "group_c_02_warning_less.log": "warning_less",
+    "group_c_03_warning_less.log": "warning_less",
+    "group_c_04_warning_less.log": "warning_less",
+    "group_c_05_warning_less.log": "warning_less",
+    "group_c_06_warning_heavy.log": "warning_heavy",
+    "group_c_07_warning_heavy.log": "warning_heavy",
+    "group_c_08_warning_heavy.log": "warning_heavy",
+    "group_c_09_warning_heavy.log": "warning_heavy",
+    "group_c_10_warning_heavy.log": "warning_heavy"
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "group_a": {
+    "_description": "Normal operation baseline.",
+    "expected_num_clusters": 1,
+    "files": {
+      "group_a_01_normal.log": "normal",
+      "group_a_02_normal.log": "normal",
+      "group_a_03_normal.log": "normal",
+      "group_a_04_normal.log": "normal",
+      "group_a_05_normal.log": "normal",
+      "group_a_06_normal.log": "normal",
+      "group_a_07_normal.log": "normal",
+      "group_a_08_normal.log": "normal",
+      "group_a_09_normal.log": "normal",
+      "group_a_10_normal.log": "normal"
+    }
+  },
+  "group_b": {
+    "_description": "Heavy configuration variations. Same configuration label should cluster together.",
+    "expected_num_clusters": 5,
+    "files": {
+      "group_b_01_cfg_ipv6_disabled.log": "ipv6_disabled",
+      "group_b_02_cfg_ipv6_disabled.log": "ipv6_disabled",
+      "group_b_03_cfg_ipv6_enabled.log": "ipv6_enabled",
+      "group_b_04_cfg_ipv6_enabled.log": "ipv6_enabled",
+      "group_b_05_cfg_console_tty8.log": "console_tty8",
+      "group_b_06_cfg_console_tty8.log": "console_tty8",
+      "group_b_07_cfg_audit_enabled.log": "audit_enabled",
+      "group_b_08_cfg_audit_enabled.log": "audit_enabled",
+      "group_b_09_cfg_isolcpu_off.log": "isolcpu_off",
+      "group_b_10_cfg_isolcpu_off.log": "isolcpu_off"
+    }
+  },
+  "group_c": {
+    "_description": "Partially degraded systems. Five less-warning and five heavy-warning logs.",
+    "expected_num_clusters": 3,
+    "files": {
+      "group_c_01_warning_less.log": "warning_less",
+      "group_c_02_warning_less.log": "warning_less",
+      "group_c_03_warning_less.log": "warning_less",
+      "group_c_04_warning_less.log": "warning_less",
+      "group_c_05_warning_less.log": "warning_less",
+      "group_c_06_warning_heavy.log": "warning_heavy",
+      "group_c_07_warning_heavy.log": "warning_heavy",
+      "group_c_08_warning_heavy.log": "warning_heavy",
+      "group_c_09_warning_heavy.log": "warning_heavy",
+      "group_c_10_warning_heavy.log": "warning_heavy"
+    }
+  },
+  "group_d": {
+    "_description": "Failure conditions. Five less-failure and five heavy-failure logs.",
+    "expected_num_clusters": 3,
+    "files": {
+      "group_d_01_failure_less.log": "failure_less",
+      "group_d_02_failure_less.log": "failure_less",
+      "group_d_03_failure_less.log": "failure_less",
+      "group_d_04_failure_less.log": "failure_less",
+      "group_d_05_failure_less.log": "failure_less",
+      "group_d_06_failure_heavy.log": "failure_heavy",
+      "group_d_07_failure_heavy.log": "failure_heavy",
+      "group_d_08_failure_heavy.log": "failure_heavy",
+      "group_d_09_failure_heavy.log": "failure_heavy",
+      "group_d_10_failure_heavy.log": "failure_heavy"
+    }
+  },
+  "group_e": {
+    "_description": "Kernel-log contamination. Five less-contaminated and five heavily contaminated logs.",
+    "expected_num_clusters": 3,
+    "files": {
+      "group_e_01_contamination_less.log": "contamination_less",
+      "group_e_02_contamination_less.log": "contamination_less",
+      "group_e_03_contamination_less.log": "contamination_less",
+      "group_e_04_contamination_less.log": "contamination_less",
+      "group_e_05_contamination_less.log": "contamination_less",
+      "group_e_06_contamination_heavy.log": "contamination_heavy",
+      "group_e_07_contamination_heavy.log": "contamination_heavy",
+      "group_e_08_contamination_heavy.log": "contamination_heavy",
+      "group_e_09_contamination_heavy.log": "contamination_heavy",
+      "group_e_10_contamination_heavy.log": "contamination_heavy"
+    }
+  }
+}

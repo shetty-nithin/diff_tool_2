@@ -1,0 +1,16 @@
+{
+  "_description": "Kernel-log contamination. Five less-contaminated and five heavily contaminated logs.",
+  "expected_num_clusters": 3,
+  "files": {
+    "group_e_01_contamination_less.log": "contamination_less",
+    "group_e_02_contamination_less.log": "contamination_less",
+    "group_e_03_contamination_less.log": "contamination_less",
+    "group_e_04_contamination_less.log": "contamination_less",
+    "group_e_05_contamination_less.log": "contamination_less",
+    "group_e_06_contamination_heavy.log": "contamination_heavy",
+    "group_e_07_contamination_heavy.log": "contamination_heavy",
+    "group_e_08_contamination_heavy.log": "contamination_heavy",
+    "group_e_09_contamination_heavy.log": "contamination_heavy",
+    "group_e_10_contamination_heavy.log": "contamination_heavy"
+  }
+}

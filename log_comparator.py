@@ -558,6 +558,7 @@ class LogComparator:
     # =========================================================================
 
     def _compute_cluster_stats(self, filenames, labels, unique_labels):
+
         self._cluster_stats = {}
 
         for label in unique_labels:

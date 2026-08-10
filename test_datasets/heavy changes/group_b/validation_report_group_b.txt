@@ -1,0 +1,24 @@
+=====================================================================================
+VALIDATION RESULT: group_b
+=====================================================================================
+Dataset folder       : /Users/nithinshetty/aiml/projects/diff_tool/test_datasets/group_b
+Algorithm            : GMM (k=2)
+Expected clusters    : 5
+Found clusters       : 2
+Purity               : 0.4
+Silhouette           : 0.001350072692229907
+TP                   : 0
+FP                   : 0
+FN                   : 0
+TN                   : 10
+Precision            : 0.0
+Recall               : 0.0
+F1                   : 0.0
+Behavior pass        : True
+Purity pass          : False
+Verdict              : FAIL
+Cluster distances    : {'0<->1': 0.49939999999999996}
+
+=====================================================================================
+VALIDATION COMPLETED SUCCESSFULLY
+=====================================================================================

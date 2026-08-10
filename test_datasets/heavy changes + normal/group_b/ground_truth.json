@@ -1,0 +1,26 @@
+{
+  "_description": "Heavy configuration variations. Same configuration label should cluster together.",
+  "expected_num_clusters": 5,
+  "files": {
+    "group_b_01_cfg_ipv6_disabled.log": "cfg_ipv6_disabled",
+    "group_b_02_cfg_ipv6_disabled.log": "cfg_ipv6_disabled",
+    "group_b_03_cfg_ipv6_enabled.log": "cfg_ipv6_enabled",
+    "group_b_04_cfg_ipv6_enabled.log": "cfg_ipv6_enabled",
+    "group_b_05_cfg_console_tty8.log": "cfg_console_tty8",
+    "group_b_06_cfg_console_tty8.log": "cfg_console_tty8",
+    "group_b_07_cfg_audit_enabled.log": "cfg_audit_enabled",
+    "group_b_08_cfg_audit_enabled.log": "cfg_audit_enabled",
+    "group_b_09_cfg_isolcpu_off.log": "cfg_isolcpu_off",
+    "group_b_10_cfg_isolcpu_off.log": "cfg_isolcpu_off",
+    "group_a_01_normal.log": "normal",
+    "group_a_02_normal.log": "normal",
+    "group_a_03_normal.log": "normal",
+    "group_a_04_normal.log": "normal",
+    "group_a_05_normal.log": "normal",
+    "group_a_06_normal.log": "normal",
+    "group_a_07_normal.log": "normal",
+    "group_a_08_normal.log": "normal",
+    "group_a_09_normal.log": "normal",
+    "group_a_10_normal.log": "normal"
+  }
+}

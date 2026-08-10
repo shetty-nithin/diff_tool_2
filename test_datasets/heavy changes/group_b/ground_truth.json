@@ -1,0 +1,16 @@
+{
+  "_description": "Heavy configuration variations. Same configuration label should cluster together.",
+  "expected_num_clusters": 5,
+  "files": {
+    "group_b_01_cfg_ipv6_disabled.log": "ipv6_disabled",
+    "group_b_02_cfg_ipv6_disabled.log": "ipv6_disabled",
+    "group_b_03_cfg_ipv6_enabled.log": "ipv6_enabled",
+    "group_b_04_cfg_ipv6_enabled.log": "ipv6_enabled",
+    "group_b_05_cfg_console_tty8.log": "console_tty8",
+    "group_b_06_cfg_console_tty8.log": "console_tty8",
+    "group_b_07_cfg_audit_enabled.log": "audit_enabled",
+    "group_b_08_cfg_audit_enabled.log": "audit_enabled",
+    "group_b_09_cfg_isolcpu_off.log": "isolcpu_off",
+    "group_b_10_cfg_isolcpu_off.log": "isolcpu_off"
+  }
+}

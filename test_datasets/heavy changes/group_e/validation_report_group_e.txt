@@ -1,0 +1,24 @@
+=====================================================================================
+VALIDATION RESULT: group_e
+=====================================================================================
+Dataset folder       : /Users/nithinshetty/aiml/projects/diff_tool/test_datasets/group_e
+Algorithm            : Agglomerative (k=2)
+Expected clusters    : 3
+Found clusters       : 2
+Purity               : 1.0
+Silhouette           : 0.011534603811434424
+TP                   : 0
+FP                   : 0
+FN                   : 0
+TN                   : 10
+Precision            : 0.0
+Recall               : 0.0
+F1                   : 0.0
+Behavior pass        : True
+Purity pass          : True
+Verdict              : PASS
+Cluster distances    : {'0<->1': 0.4985}
+
+=====================================================================================
+VALIDATION COMPLETED SUCCESSFULLY
+=====================================================================================

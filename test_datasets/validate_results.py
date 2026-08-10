@@ -349,10 +349,7 @@ def validate_expected_behavior(group_name, gt_files, rows, cluster_labels):
     # GROUP D
     elif group_name == "group_d":
 
-        result["expected_behavior"] = (
-            "Failure logs should be distinguishable "
-            "from normal operation."
-        )
+        result["expected_behavior"] = ("Failure logs should be distinguishable from normal operation.")
 
         normal_clusters = {
             cluster
@@ -364,7 +361,7 @@ def validate_expected_behavior(group_name, gt_files, rows, cluster_labels):
         failure_clusters = {
             cluster
             for _, gt, cluster in rows
-            if gt.startswith("fail_")
+            if gt.startswith("fail")
             and cluster != "NOT FOUND"
         }
 
@@ -373,10 +370,7 @@ def validate_expected_behavior(group_name, gt_files, rows, cluster_labels):
     # GROUP E
     elif group_name == "group_e":
 
-        result["expected_behavior"] = (
-            "Contaminated logs should be distinguishable "
-            "from normal kernel logs."
-        )
+        result["expected_behavior"] = ("Contaminated logs should be distinguishable from normal kernel logs.")
 
         normal_clusters = {
             cluster
@@ -388,8 +382,7 @@ def validate_expected_behavior(group_name, gt_files, rows, cluster_labels):
         contamination_clusters = {
             cluster
             for _, gt, cluster in rows
-            if gt == "contaminated"
-            and cluster != "NOT FOUND"
+            if gt.startswith("contamination") and cluster != "NOT FOUND"
         }
 
         result["behavior_pass"] = bool(contamination_clusters - normal_clusters)

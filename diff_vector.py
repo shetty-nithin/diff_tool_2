@@ -50,5 +50,5 @@ def compute_diff_vector(ops_html, orig_a, orig_b):
     edit_cost          = deleted + inserted + (moved * 2)
     ned                = edit_cost / (total_a + total_b + edit_cost) if (total_a + total_b + edit_cost) > 0 else 0.0
     v.overall_distance = round(ned, 4)
-
+    
     return v

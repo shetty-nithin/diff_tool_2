@@ -2,22 +2,22 @@
 VALIDATION RESULT: group_d
 =====================================================================================
 Dataset folder       : /Users/nithinshetty/aiml/projects/diff_tool/test_datasets/group_d
-Algorithm            : DBSCAN (eps=0.005, k=1)
-Expected clusters    : 5
-Found clusters       : 1
-Purity               : 0.1
-Silhouette           : None
-TP                   : 10
+Algorithm            : GMM (k=3)
+Expected clusters    : 3
+Found clusters       : 3
+Purity               : 1.0
+Silhouette           : 0.23207602339181282
+TP                   : 0
 FP                   : 0
 FN                   : 0
-TN                   : 0
-Precision            : 1.0
-Recall               : 1.0
-F1                   : 1.0
+TN                   : 20
+Precision            : 0.0
+Recall               : 0.0
+F1                   : 0.0
 Behavior pass        : True
-Purity pass          : False
-Verdict              : FAIL
-Cluster distances    : {}
+Purity pass          : True
+Verdict              : PASS
+Cluster distances    : {'0<->1': 0.0097, '0<->2': 0.001, '1<->2': 0.010699999999999998}
 
 =====================================================================================
 VALIDATION COMPLETED SUCCESSFULLY

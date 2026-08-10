@@ -1,0 +1,24 @@
+=====================================================================================
+VALIDATION RESULT: group_c
+=====================================================================================
+Dataset folder       : /Users/nithinshetty/aiml/projects/diff_tool/test_datasets/group_c
+Algorithm            : GMM (k=2)
+Expected clusters    : 2
+Found clusters       : 2
+Purity               : 1.0
+Silhouette           : 0.2516988416988418
+TP                   : 0
+FP                   : 0
+FN                   : 0
+TN                   : 20
+Precision            : 0.0
+Recall               : 0.0
+F1                   : 0.0
+Behavior pass        : True
+Purity pass          : True
+Verdict              : PASS
+Cluster distances    : {'0<->1': 0.0010500000000000004}
+
+=====================================================================================
+VALIDATION COMPLETED SUCCESSFULLY
+=====================================================================================
