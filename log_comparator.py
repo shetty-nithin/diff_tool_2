@@ -25,6 +25,12 @@ import warnings
 from sklearn.exceptions import ConvergenceWarning
 warnings.filterwarnings("ignore", category=ConvergenceWarning)
 
+from domain_distance import (
+    get_domain_signature,
+    calculate_domain_distance,
+    calculate_composite_distance
+)
+
 
 # =========================================================================
 # Dependency check
@@ -53,13 +59,14 @@ class LogComparator:
     """
 
     def __init__(self, output_dir: str):
-        self.output_dir     = output_dir
-        self.results        = {}
-        self.clusters       = {}
-        self.algorithm_used = None
-        self._cluster_stats = {}
-        self._D             = None      # NxN distance matrix (numpy array)
-        self._filenames     = []        # ordered list of filenames
+        self.output_dir         = output_dir
+        self.results            = {}
+        self.clusters           = {}
+        self.algorithm_used     = None
+        self._cluster_stats     = {}
+        self._D                 = None      # NxN distance matrix (numpy array)
+        self._filenames         = []        # ordered list of filenames
+        self._domain_signatures = {}
 
         os.makedirs(os.path.join("outputs", "pairwise_diffs"), exist_ok=True)
         os.makedirs(os.path.join("outputs", "graphs"),         exist_ok=True)
@@ -69,11 +76,6 @@ class LogComparator:
     # =========================================================================
 
     def compare_pairwise(self, log_dir: str, extension: str = ".log"):
-        """
-        Run patience_diff(file_a, file_b) for every unique pair of log files.
-        N files → N*(N-1)/2 comparisons.
-        Results stored in self.results as { (file_a, file_b): DiffVector }.
-        """
         from patience_diff import patience_diff
         import itertools
 
@@ -87,28 +89,79 @@ class LogComparator:
             return
 
         n_pairs = len(log_files) * (len(log_files) - 1) // 2
-        print(f"[LogComparator] Pairwise comparing {len(log_files)} files "
-              f"({n_pairs} pairs)")
+
+        print(
+            f"[LogComparator] Pairwise comparing {len(log_files)} files "
+            f"({n_pairs} pairs)"
+        )
 
         self.results = {}
+        self._domain_signatures = {}
 
+        # DOMAIN ANALYSIS
+        for filename in log_files:
+            path = os.path.join(log_dir, filename)
+
+            try:
+                self._domain_signatures[filename] = get_domain_signature(path)
+            except Exception as e:
+                print(
+                    f"[LogComparator] Domain analysis failed for "
+                    f"{filename}: {e}"
+                )
+
+                self._domain_signatures[filename] = {
+                    "warning": 0.0,
+                    "failure": 0.0,
+                    "contamination": 0.0,
+                }
+
+        # PAIRWISE COMPARISON
         for file_a, file_b in itertools.combinations(log_files, 2):
-            path_a      = os.path.join(log_dir, file_a)
-            path_b      = os.path.join(log_dir, file_b)
+            path_a = os.path.join(log_dir, file_a)
+            path_b = os.path.join(log_dir, file_b)
+
             output_stem = os.path.join(
                 self.output_dir,
                 f"{file_a}_vs_{file_b}".replace(".log", "")
             )
 
-            #print(f"  {file_a}  vs  {file_b} ...", end=" ", flush=True)
             try:
                 vec = patience_diff(path_a, path_b, output_stem)
-                self.results[(file_a, file_b)] = vec
-                #print(f"done  (distance={vec.overall_distance:.4f})")
-            except Exception as e:
-                print(f"ERROR: {e}")
 
-        print(f"[LogComparator] Done. {len(self.results)} pairs compared.")
+                # Domain-aware distance
+                (
+                    warning_distance,
+                    failure_distance,
+                    contamination_distance,
+                    domain_distance
+                ) = calculate_domain_distance(
+                    self._domain_signatures[file_a],
+                    self._domain_signatures[file_b]
+                )
+
+                # Composite distance
+                _, composite_distance = calculate_composite_distance(vec.ned, warning_distance, failure_distance, contamination_distance)
+
+                # Save all components
+                vec.warning_distance = warning_distance
+                vec.failure_distance = failure_distance
+                vec.contamination_distance = contamination_distance
+                vec.domain_distance = domain_distance
+                vec.overall_distance = composite_distance
+
+                self.results[(file_a, file_b)] = vec
+
+            except Exception as e:
+                print(
+                    f"[LogComparator] Comparison failed for "
+                    f"{file_a} vs {file_b}: {e}"
+                )
+
+        print(
+            f"[LogComparator] Done. "
+            f"{len(self.results)} pairs compared."
+        )
 
     # =========================================================================
     # STEP 2 — Build NxN distance matrix
@@ -117,15 +170,15 @@ class LogComparator:
     def build_distance_matrix(self):
         """
         Converts pairwise DiffVectors into a symmetric NxN distance matrix.
+        Uses the composite overall_distance stored in each DiffVector.
 
-        Uses the NED (Normalised Edit Distance) stored in overall_distance.
-        NED is proven to satisfy the triangle inequality (Li & Bo, 2007),
-        making it a valid metric for all distance-based clustering algorithms.
+        overall_distance combines:
+            - original NED
+            - warning distance
+            - failure distance
+            - contamination distance
 
-        Returns
-        -------
-        D         : numpy ndarray, shape (N, N)
-        filenames : list of N filenames in the same order as D's rows/cols
+        The resulting matrix is used by DBSCAN and Agglomerative clustering.
         """
         import numpy as np
 
@@ -424,7 +477,7 @@ class LogComparator:
             eps = np.median(kth_dist)
 
         # Clamp eps to a reasonable range
-        eps = float(np.clip(eps, 0.001, 0.99))
+        eps = float(np.clip(eps, 0.01, 0.99))
 
         model  = DBSCAN(eps=eps, min_samples=2, metric="precomputed")
         labels = model.fit_predict(D)
@@ -634,11 +687,16 @@ class LogComparator:
             avg = lambda attr: round(sum(getattr(p, attr) for p in pairs) / len(pairs), 4) if pairs else 0.0
 
             groups.setdefault(str(label), []).append({
-                "filename":         filename,
+                "filename": filename,
+                "ned": avg("ned"),
+                "warning_distance": avg("warning_distance"),
+                "failure_distance": avg("failure_distance"),
+                "contamination_distance": avg("contamination_distance"),
+                "domain_distance": avg("domain_distance"),
                 "overall_distance": avg("overall_distance"),
                 "similarity_ratio": avg("similarity_ratio"),
-                "churn_ratio":      avg("churn_ratio"),
-                "move_ratio":       avg("move_ratio"),
+                "churn_ratio": avg("churn_ratio"),
+                "move_ratio": avg("move_ratio"),
             })
 
         output = {
@@ -676,6 +734,22 @@ class LogComparator:
         return [
             sum(getattr(v, attr) for v in pairs) / len(pairs)
             for attr in attrs
+        ]
+
+    def _domain_vector(self, filename):
+        signature = self._domain_signatures.get(
+            filename,
+            {
+                "warning": 0.0,
+                "failure": 0.0,
+                "contamination": 0.0,
+            }
+        )
+
+        return [
+            signature["warning"],
+            signature["failure"],
+            signature["contamination"],
         ]
 
     def plot_scatter(self, output_path="outputs/graphs/scatter.png"):

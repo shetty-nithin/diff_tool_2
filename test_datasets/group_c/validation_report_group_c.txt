@@ -6,7 +6,7 @@ Algorithm            : GMM (k=3)
 Expected clusters    : 3
 Found clusters       : 3
 Purity               : 1.0
-Silhouette           : 0.22775907188972333
+Silhouette           : 0.8839176829268292
 TP                   : 0
 FP                   : 0
 FN                   : 0
@@ -17,7 +17,7 @@ F1                   : 0.0
 Behavior pass        : True
 Purity pass          : True
 Verdict              : PASS
-Cluster distances    : {'0<->1': 0.0097, '0<->2': 0.0015, '1<->2': 0.0111}
+Cluster distances    : {'0<->1': 0.0467, '0<->2': 0.008199999999999999, '1<->2': 0.04}
 
 =====================================================================================
 VALIDATION COMPLETED SUCCESSFULLY

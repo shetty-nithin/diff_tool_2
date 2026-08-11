@@ -8,42 +8,91 @@ Requirements
     pip install PyQt6
     pip install pyinstaller
 
-Build:
-------
+Build (macOS/Linux):
+--------------------
     pyinstaller --windowed --name "SemanticDiffTool" --collect-all PyQt6 launcher.py
+
+Build (Windows):
+----------------
+    pyinstaller --noconfirm --clean --windowed --name "SemanticDiffTool" --collect-all PyQt6 launcher.py
 """
 import os
 import sys
+import shutil
 import subprocess
-from PyQt6.QtWidgets import QApplication, QWidget, QStackedWidget, QVBoxLayout, QHBoxLayout, QLabel, QPushButton, QFileDialog, QLineEdit, QFrame, QMessageBox
+from PyQt6.QtWidgets import (
+    QApplication, QWidget, QStackedWidget, QVBoxLayout, QHBoxLayout,
+    QLabel, QPushButton, QFileDialog, QLineEdit, QFrame, QMessageBox
+)
 from PyQt6.QtCore import Qt, QThread, pyqtSignal, QObject, QTimer
 from PyQt6.QtGui import QFont, QColor, QPalette
 
 # ── project root ──────────────────────────────────────────────────────────────
 if getattr(sys, "frozen", False):
-    ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(sys.executable))))))
+    ROOT = os.path.dirname(
+        os.path.dirname(
+            os.path.dirname(
+                os.path.dirname(
+                    os.path.dirname(os.path.abspath(sys.executable))
+                )
+            )
+        )
+    )
 else:
     ROOT = os.path.dirname(os.path.abspath(__file__))
 
-# ── find Python interpreter ───────────────────────────────────────────────────
+# Normalize root path for OS consistency
+ROOT = os.path.normpath(ROOT)
+
+# ── find Python interpreter (Cross-Platform) ──────────────────────────────────
 def _find_python():
-    if not getattr(sys, "frozen", False):
+    """
+    Finds the correct Python executable across macOS, Windows, and Linux.
+    Prioritizes the active Python environment running this launcher.
+    """
+    # 1. ALWAYS use the currently running interpreter if NOT frozen by PyInstaller
+    if not getattr(sys, "frozen", False) and sys.executable and os.path.isfile(sys.executable):
         return sys.executable
-    candidates = [
-        "/opt/anaconda3/bin/python3",
-        "/usr/local/bin/python3",
-        "/usr/bin/python3",
-        os.path.expanduser("~/anaconda3/bin/python3"),
-        os.path.expanduser("~/miniconda3/bin/python3"),
-    ]
+
+    # 2. If running inside an active virtualenv / conda environment
+    is_venv = sys.prefix != sys.base_prefix or "conda" in sys.prefix.lower()
+    if is_venv:
+        if sys.platform == "win32":
+            venv_python = os.path.join(sys.prefix, "Scripts", "python.exe")
+        else:
+            venv_python = os.path.join(sys.prefix, "bin", "python")
+        if os.path.isfile(venv_python):
+            return venv_python
+
+    # 3. Search PATH using shutil
+    cmd_name = "python" if sys.platform == "win32" else "python3"
+    found = shutil.which(cmd_name) or shutil.which("python")
+    if found:
+        return found
+
+    # 4. OS-specific fallback candidates for PyInstaller standalone builds
+    if sys.platform == "win32":
+        candidates = [
+            os.path.expanduser(r"~\AppData\Local\Programs\Python\Python312\python.exe"),
+            os.path.expanduser(r"~\AppData\Local\Programs\Python\Python311\python.exe"),
+            os.path.expanduser(r"~\AppData\Local\Programs\Python\Python310\python.exe"),
+            r"C:\Python312\python.exe",
+            r"C:\Python311\python.exe",
+        ]
+    else:
+        candidates = [
+            "/opt/anaconda3/bin/python3",
+            "/usr/local/bin/python3",
+            "/usr/bin/python3",
+            os.path.expanduser("~/anaconda3/bin/python3"),
+            os.path.expanduser("~/miniconda3/bin/python3"),
+        ]
+
     for c in candidates:
         if os.path.isfile(c):
             return c
-    import shutil
-    found = shutil.which("python3")
-    if found:
-        return found
-    return "python3"
+
+    return cmd_name
 
 PYTHON = _find_python()
 
@@ -57,10 +106,30 @@ class Worker(QObject):
         self.cmd = cmd
         self._proc = None
         self._error_detail = ""
+
     def run(self):
         self._error_detail = ""
         try:
-            self._proc = subprocess.Popen(self.cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, cwd=ROOT, text=True, encoding="utf-8", errors="replace")
+            # Inject ROOT into PYTHONPATH so sub-processes find local imports
+            env = os.environ.copy()
+            env["PYTHONPATH"] = ROOT + os.pathsep + env.get("PYTHONPATH", "")
+
+            # Prevent CMD window popup on Windows when running subprocesses
+            kwargs = {
+                "stdout": subprocess.PIPE,
+                "stderr": subprocess.STDOUT,
+                "cwd": ROOT,
+                "env": env,
+                "text": True,
+                "encoding": "utf-8",
+                "errors": "replace"
+            }
+            if sys.platform == "win32":
+                startupinfo = subprocess.STARTUPINFO()
+                startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+                kwargs["startupinfo"] = startupinfo
+
+            self._proc = subprocess.Popen(self.cmd, **kwargs)
             out, _ = self._proc.communicate()
             ok = self._proc.returncode == 0
             if not ok:
@@ -71,6 +140,7 @@ class Worker(QObject):
             self._error_detail = str(e)
         output_dir = os.path.join(ROOT, "outputs")
         self.finished.emit(ok, output_dir)
+
     def stop(self):
         if self._proc:
             self._proc.terminate()
@@ -359,13 +429,14 @@ class MainWindow(QWidget):
         else:
             path, _ = QFileDialog.getOpenFileName(self, "Select Log File", start_dir, "Log Files (*.log);;All Files (*)")
         if path:
+            path = os.path.normpath(path)
             self._last_dir = path if os.path.isdir(path) else os.path.dirname(path)
             if field is self.input_a and not self.input_b.text().strip():
                 self.input_b.setPlaceholderText(self._last_dir)
             try:
                 path = os.path.relpath(path, ROOT)
             except ValueError:
-                pass
+                pass  # Handles cases on Windows where paths are on different drives
             field.setText(path)
 
     # ── run ───────────────────────────────────────────────────────────────────
@@ -379,6 +450,7 @@ class MainWindow(QWidget):
                 return
             fa = fa if os.path.isabs(fa) else os.path.join(ROOT, fa)
             fb = fb if os.path.isabs(fb) else os.path.join(ROOT, fb)
+            fa, fb = os.path.normpath(fa), os.path.normpath(fb)
             if not os.path.isfile(fa):
                 self._alert(f"File A not found:\n{fa}", error=True)
                 return
@@ -392,6 +464,7 @@ class MainWindow(QWidget):
                 self._alert("Please select a log directory before running.", error=True)
                 return
             d = d if os.path.isabs(d) else os.path.join(ROOT, d)
+            d = os.path.normpath(d)
             if not os.path.isdir(d):
                 self._alert(f"Directory not found:\n{d}", error=True)
                 return
@@ -432,7 +505,7 @@ class MainWindow(QWidget):
         if self._worker is not None and self._thread is not None and self._thread.isRunning():
             return
 
-        script = os.path.join(ROOT, "test_datasets", "validate_results.py")
+        script = os.path.normpath(os.path.join(ROOT, "test_datasets", "validate_results.py"))
         if not os.path.isfile(script):
             self._alert(f"validate_results.py not found at:\n{script}\n\nMake sure that test_datasets/ is in your project root.", error=True)
             self.tab_validate.setChecked(False)
@@ -448,7 +521,7 @@ class MainWindow(QWidget):
             self.tab_cluster.setChecked(previous_mode == "cluster")
             return
 
-        folder = os.path.abspath(folder)
+        folder = os.path.normpath(os.path.abspath(folder))
         if not os.path.isdir(folder):
             self._alert(f"Selected folder does not exist:\n{folder}", error=True)
             self.tab_validate.setChecked(False)
@@ -513,7 +586,10 @@ class MainWindow(QWidget):
         h.setAlignment(Qt.AlignmentFlag.AlignCenter)
         h.setStyleSheet(f"color: {TEXT}; font-size: 20px; font-weight: 700;")
         layout.addWidget(h)
-        rel = os.path.relpath(output_dir, ROOT)
+        try:
+            rel = os.path.relpath(output_dir, ROOT)
+        except ValueError:
+            rel = output_dir
         sub = QLabel(f"Output saved to   {rel}/")
         sub.setAlignment(Qt.AlignmentFlag.AlignCenter)
         sub.setStyleSheet(f"color: {TEXT_DIM}; font-size: 12px;")

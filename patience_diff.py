@@ -492,5 +492,6 @@ def patience_diff(file_a, file_b, output_file):
     # =========================================================================
     # SECTION 14 — Ranking And Clustering
     # =========================================================================
+
     from diff_vector import compute_diff_vector
     return compute_diff_vector(final_ops_html, orig_a, orig_b)

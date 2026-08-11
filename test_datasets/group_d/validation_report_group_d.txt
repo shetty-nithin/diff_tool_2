@@ -2,11 +2,11 @@
 VALIDATION RESULT: group_d
 =====================================================================================
 Dataset folder       : /Users/nithinshetty/aiml/projects/diff_tool/test_datasets/group_d
-Algorithm            : GMM (k=3)
+Algorithm            : Agglomerative (k=3)
 Expected clusters    : 3
 Found clusters       : 3
 Purity               : 1.0
-Silhouette           : 0.23207602339181282
+Silhouette           : 0.9615251146178985
 TP                   : 0
 FP                   : 0
 FN                   : 0
@@ -17,7 +17,7 @@ F1                   : 0.0
 Behavior pass        : True
 Purity pass          : True
 Verdict              : PASS
-Cluster distances    : {'0<->1': 0.0097, '0<->2': 0.001, '1<->2': 0.010699999999999998}
+Cluster distances    : {'0<->1': 0.1067, '0<->2': 0.1242, '1<->2': 0.0185}
 
 =====================================================================================
 VALIDATION COMPLETED SUCCESSFULLY

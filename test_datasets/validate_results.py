@@ -23,8 +23,6 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from main import run_multi_file_cluster
 
 
-
-
 # ============================================================================
 # Configuration
 # ============================================================================
@@ -499,9 +497,7 @@ def validate(group_folder, clusters_json_path):
     TP = FP = FN = TN = 0
 
     for fname, gt_label, assigned in rows:
-
-        if assigned == "NOT FOUND":
-            continue
+        if assigned == "NOT FOUND": continue
 
         true_anomaly = is_anomaly(gt_label)
         predicted_anomaly = (assigned in anomaly_clusters)

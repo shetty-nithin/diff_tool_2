@@ -3,13 +3,24 @@ import json
 
 @dataclass
 class DiffVector:
-    similarity_ratio:   float = 0.0  # 1.0 = identical
-    structural_change:  float = 0.0  # 1.0 = completely different
-    deletion_ratio:     float = 0.0  # deleted / total_a
-    insertion_ratio:    float = 0.0  # inserted / total_b
-    churn_ratio:        float = 0.0  # (deleted + inserted) / total
-    move_ratio:         float = 0.0  # moved lines / total
-    overall_distance:   float = 0.0  # single scalar, 0.0=same, 1.0=different
+    similarity_ratio:       float = 0.0  # 1.0 = identical
+    structural_change:      float = 0.0  # 1.0 = completely different
+    deletion_ratio:         float = 0.0  # deleted / total_a
+    insertion_ratio:        float = 0.0  # inserted / total_b
+    churn_ratio:            float = 0.0  # (deleted + inserted) / total
+    move_ratio:             float = 0.0  # moved lines / total
+
+    # Baseline distance
+    ned: float = 0.0
+
+    # Domain-aware distances
+    warning_distance:       float = 0.0
+    failure_distance:       float = 0.0
+    contamination_distance: float = 0.0
+    domain_distance:        float = 0.0
+
+    # Final clustering distance
+    overall_distance:       float = 0.0 # single scalar, 0.0=same, 1.0=different
 
     def to_cluster_array(self):
         return [
@@ -47,8 +58,10 @@ def compute_diff_vector(ops_html, orig_a, orig_b):
     v.churn_ratio       = (deleted + inserted) / total    if total   > 0 else 0.0
     v.move_ratio        = (moved * 2) / total             if total   > 0 else 0.0
 
-    edit_cost          = deleted + inserted + (moved * 2)
-    ned                = edit_cost / (total_a + total_b + edit_cost) if (total_a + total_b + edit_cost) > 0 else 0.0
-    v.overall_distance = round(ned, 4)
+    edit_cost           = deleted + inserted + (moved * 2)
+    ned                 = edit_cost / (total_a + total_b + edit_cost) if (total_a + total_b + edit_cost) > 0 else 0.0
+
+    v.ned               = round(ned, 4)
+    v.overall_distance  = v.ned
     
     return v
