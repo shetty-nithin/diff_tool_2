@@ -13,7 +13,13 @@ __pycache__/
 **/.DS_Store
 
 # Output files (generated at runtime, not source code)
-#outputs/
+outputs/
+
+test_datasets/group_a/validation_report_group_a.txt
+test_datasets/group_b/validation_report_group_b.txt
+test_datasets/group_c/validation_report_group_c.txt
+test_datasets/group_d/validation_report_group_d.txt
+test_datasets/group_e/validation_report_group_e.txt
 
 # Virtual environments
 venv/
