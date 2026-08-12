@@ -10,9 +10,16 @@ __pycache__/
 
 # Mac system files
 .DS_Store
+**/.DS_Store
 
 # Output files (generated at runtime, not source code)
-#outputs/
+outputs/
+
+test_datasets/groap_a/validation_report_group_a.txt
+test_datasets/groap_b/validation_report_group_b.txt
+test_datasets/groap_c/validation_report_group_c.txt
+test_datasets/groap_d/validation_report_group_d.txt
+test_datasets/groap_e/validation_report_group_e.txt
 
 # Virtual environments
 venv/
